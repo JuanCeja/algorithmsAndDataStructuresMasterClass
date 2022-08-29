@@ -15,27 +15,53 @@ let arr4 = [1,9]
 let arr5 = [1,2,1];
 let arr6 = [4,4,1];
 
+// ============================ REFACTORED CODE O(N) TIME COMPLEXITY ==========================
+
 var same = function(arr1, arr2) {
-    // basecase. if lengths do not equal return false immediately 
     if(arr1.length !== arr2.length) return false;
 
-    // loop through first array
-    for (let i = 0; i < arr1.length; i++){
+    let frequencyCounter1 = {};
+    let frequencyCounter2 = {};
 
-        // create variable to compare and check if the squared value exists
-        let correctIndex = arr2.indexOf(arr1[i] ** 2);
-
-        // we return false becuase value does not exist
-        if(correctIndex === -1) return false;
-
-        // remove the value once we know it exists and proceed to our next iteration in the loop
-        arr2.splice(correctIndex, 1);
+    for(let val of arr1) {
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
     }
 
-    // return if we never hit false in our loop
-    return true;
+    for(let val of arr2) {
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    }
 
+    for(let key in frequencyCounter1) {
+        if(!(key ** 2 in frequencyCounter2)) return false;
+
+        if(frequencyCounter2[key ** 2] !== frequencyCounter1[key]) return false;
+    }
+    return true;
 }
+
+// ============================ REFACTORED CODE O(N) TIME COMPLEXITY ==========================
+
+// var same = function(arr1, arr2) {
+//     // basecase. if lengths do not equal return false immediately 
+//     if(arr1.length !== arr2.length) return false;
+
+//     // loop through first array
+//     for (let i = 0; i < arr1.length; i++){
+
+//         // create variable to compare and check if the squared value exists
+//         let correctIndex = arr2.indexOf(arr1[i] ** 2);
+
+//         // we return false becuase value does not exist
+//         if(correctIndex === -1) return false;
+
+//         // remove the value once we know it exists and proceed to our next iteration in the loop
+//         arr2.splice(correctIndex, 1);
+//     }
+
+//     // return if we never hit false in our loop
+//     return true;
+
+// }
 
 console.log(same(arr1, arr2));
 // true
