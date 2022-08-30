@@ -32,13 +32,47 @@ let string13 = 'texttwisttime';
 let string14 = 'timetwisttext';
 
 var validAnagram = function(s1, s2) {
+    // create 2 objects to store our character counts
+    let frequencyCounter1 = {};
+    let frequencyCounter2 = {};
 
+    // create base case if strings aren't same size
+    if(s1.length !== s2.length) return false;
+
+    // loop through both strings to make our objects 
+    for(let char of s1) {
+        frequencyCounter1[char] = (frequencyCounter1[char] || 0) + 1;
+    }
+
+    for(let char of s2) {
+        frequencyCounter2[char] = (frequencyCounter2[char] || 0) + 1;
+    }
+    
+    // compare counts of each char to determine wether true or false
+    for(let key in frequencyCounter1) {
+        if(frequencyCounter1[key] !== frequencyCounter2[key]) return false
+    }
+
+    return true;
 };
 
 console.log(validAnagram(string1, string2));
+// true
+
 console.log(validAnagram(string3, string4));
+// false
+
 console.log(validAnagram(string5, string6));
+// true
+
 console.log(validAnagram(string7, string8));
+// false
+
 console.log(validAnagram(string9, string10));
+// false
+
 console.log(validAnagram(string11, string12));
+// true
+
 console.log(validAnagram(string13, string14));
+// true
