@@ -22,21 +22,31 @@ let arr4 = [-2, -1, -1, 0, 1];
 var countUniqueValues = function (arr) {
     // create a pointer and counter variable
     let pointer = 0;
-    let counter = 0;
+    let counter = 1;
 
     // basecase for an empty array
     if(arr.length < 1) return 0;
 
     // loop through array and look for different numbers. move our pointer to new value and increase counter
-    
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[pointer] !== arr[i]) {
+            counter++;
+            pointer = i;
+        }
+    }
 
     // return our counter
+    return counter;
 };
 
 console.log(countUniqueValues(arr1));
+// 2
 
 console.log(countUniqueValues(arr2));
+// 7
 
 console.log(countUniqueValues(arr3));
+// 0
 
 console.log(countUniqueValues(arr4));
+// 4
