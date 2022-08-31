@@ -20,7 +20,7 @@
 
 // ============================================================================================================
 
-function areThereDuplicates() {
+function areThereDuplicates(...arguments) {
     // create object to hold indices
     let frequencyCounter = {};
 
