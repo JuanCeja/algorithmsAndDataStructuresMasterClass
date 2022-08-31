@@ -38,22 +38,35 @@ let arr5 = [];
 let num5 = 4;
 
 var maxSubarraySum = function (arr, num) {
+    // create variables to hold temp sum and max sum
     let maxSum = 0;
     let tempSum = 0;
 
+    // base case if num is greater than our array length
     if(arr.length < num) return null;
 
+    // adding our first elements and setting as our max sum
     for(let i = 0; i < num; i++){
         maxSum += arr[i];
     };
 
+    // set tempSum to maxSum so we can compare later
     tempSum = maxSum;
     
+    // loop through our array starting at our num element which we will start our sliding window now
     for(let i = num; i < arr.length; i++){
+
+        // this subtracts our first element from our past window
+        //                     vvvvvv 
         tempSum = tempSum - arr[i - num] + arr[i];
+        //                                  ^ this adds our current element and makes new window
+
+
+        // here we compare which is greater. which ever is greater becomes our new maxSum
         maxSum = Math.max(tempSum, maxSum);
     }
 
+    // return our max sum after the loop finishes
     return maxSum;
 };
 
