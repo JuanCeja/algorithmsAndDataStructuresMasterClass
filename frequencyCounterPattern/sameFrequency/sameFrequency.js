@@ -34,6 +34,9 @@ function sameFrequency(int1, int2) {
     let str1 = int1.toString();
     let str2 = int2.toString();
 
+    // basecase
+    if(str1.length !== str2.length) return false;
+
     // loop through both strings to fill objects
     for(let i = 0; i < str1.length; i++) {
         frequencyCounter1[str1[i]] = (frequencyCounter1[str1[i]] || 0) + 1;
@@ -44,19 +47,22 @@ function sameFrequency(int1, int2) {
     };
 
     // loop thorough frequencyCounter1 and compare to frequencyCounter2 if indices do not match return false
-    
+    for(let key in frequencyCounter1) {
+        if (frequencyCounter1[key] !== frequencyCounter2[key]) return false; 
+    }
 
     // else return true 
+    return true;
 };
 
-// console.log(sameFrequency(int1, int2));
+console.log(sameFrequency(int1, int2));
 // output: true
 
-// console.log(sameFrequency(int3, int4));
+console.log(sameFrequency(int3, int4));
 // output: false
 
 console.log(sameFrequency(int5, int6));
 // output: true
 
-// console.log(sameFrequency(int7, int9));
+console.log(sameFrequency(int7, int8));
 // output: false
