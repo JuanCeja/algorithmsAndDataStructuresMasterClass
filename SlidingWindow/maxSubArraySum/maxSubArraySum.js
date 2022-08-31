@@ -38,15 +38,42 @@ let arr5 = [];
 let num5 = 4;
 
 var maxSubarraySum = function (arr, num) {
-    
+    // if num > arr length return num. this is our basecase
+    if(num > arr.length) return null;
+
+    // create variable max to keep track of max sum
+    let maxSum = -Infinity;
+
+    // loop through our arr and then run another loop to add the values of num length
+    for( let i = 0; i < arr.length - num + 1; i++){
+
+        // create a temp value to compare to max
+        let temp = 0;
+
+        // run another loop to add the values
+        for(let j = 0; j < num; j++){
+            temp += arr[i + j];
+
+            // if our values are greater than our max we re assign max
+            maxSum = Math.max(temp, maxSum);
+        }
+
+    }
+    // return max 
+    return maxSum;
 };
 
 console.log(maxSubarraySum(arr1, num1));
+// output : 10
 
 console.log(maxSubarraySum(arr2, num2));
+// output : 17
 
 console.log(maxSubarraySum(arr3, num3));
+// output : 6
 
 console.log(maxSubarraySum(arr4, num4));
+// output : 13
 
 console.log(maxSubarraySum(arr5, num5));
+// output : null
