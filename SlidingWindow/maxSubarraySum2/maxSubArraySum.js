@@ -17,6 +17,9 @@
 // ============================================================================================================
 
 function maxSubarraySum(arr, num) {
+    // edge cases
+    if (num > arr.length) return null;
+
     // create variable to hold max sum
     let maxSum = 0;
 
