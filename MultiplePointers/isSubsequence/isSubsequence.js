@@ -23,6 +23,10 @@ function isSubsequence(str1, str2) {
     let pointer = 0;
     let testString = "";
 
+    // edge cases
+    if(str1.length === 0) return true;
+    if(str2.length === 0) return false;
+
     // loop through second string 
     for(let val in str2) {
 
