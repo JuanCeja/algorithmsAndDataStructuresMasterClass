@@ -16,23 +16,21 @@
 // ===================================================================================
 
 function findLongestSubstring(s){
-    
-    let max = 0;
-    let begin = 0;
     let set = new Set();
-
-    for(let end = 0; end < s.length; end++){
-
-        let char = s[end];
-
-        while(set.has(char)) {
-            set.delete(s[begin]);
-            begin++;
+    let left = 0;
+    let right = 0;
+    let maxSubstringLength = 0;
+    while(right < s.length) {
+        if(!set.has(s[right])){
+            set.add(s[right]);
+            maxSubstringLength = Math.max(maxSubstringLength, set.size);
+            right++
+        } else {
+            set.delete(s[left]);
+            left++;
         }
-        set.add(char);
-        max = Math.max(max, end - begin + 1);
     }
-    return max;
+    return maxSubstringLength;
 };
 
 console.log(findLongestSubstring('')) 
