@@ -16,20 +16,36 @@
 // ===================================================================================
 
 function findLongestSubstring(s){
+    // make a set to see if current elements exist already
     let set = new Set();
+    // left is beginning of our window and right is the end
     let left = 0;
     let right = 0;
+    // this will keep track of our longest substring
     let maxSubstringLength = 0;
+
+    // using while loop to go through our string
     while(right < s.length) {
+
+        // check to see if current string value exists in our set
         if(!set.has(s[right])){
+
+            // if it does not we add it to our set
             set.add(s[right]);
+
+            // we compare if our maxSubstring length is greater then our current substring which is our set now
             maxSubstringLength = Math.max(maxSubstringLength, set.size);
+
+            // we increment right and start our process all over
             right++
         } else {
+
+            // if our current value already exists in our set we delete the value at left from our set and increment left up to make our new substring
             set.delete(s[left]);
             left++;
         }
     }
+    // return our maxSubstringLength
     return maxSubstringLength;
 };
 
