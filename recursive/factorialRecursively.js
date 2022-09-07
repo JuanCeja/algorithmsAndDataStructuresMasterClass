@@ -8,12 +8,23 @@
 
 // ===================================================================================
 
-function factorialRecursively (num) {
+function factorial (num) {
     // base case
     if(num === 2) return 2;
 
     // different input
-    return num * factorialRecursively(num - 1);
+    return num * factorial(num - 1);
 };
 
-console.log(factorialRecursively(5));
+console.log(factorial(3));
+console.log(factorial(4));
+
+// factorial(4)
+//   return 4 * factorial(3)
+//                return 3 * factorial(2)
+//                              return 2
+
+// factorial(4) = 24
+//   return 4 * 6
+//                return 3 * 2
+//                              return 2
