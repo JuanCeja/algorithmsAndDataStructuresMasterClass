@@ -9,8 +9,10 @@
 
 function productOfArray(arr) {
     // base case
-    
+    if(arr.length === 0) return 1;
+
     // different input
+    return arr[0] * productOfArray(arr.slice(1))
 };
 
 
@@ -19,3 +21,19 @@ console.log(productOfArray([1,2,3]))
 
 console.log(productOfArray([1,2,3,10]))
 // output 60
+
+// ===============  STEP BY STEP ===============
+
+// pof([1,2,3,10])
+//         1 * pof([2,3,10])
+//                     2 * pof([3,10])
+//                               3 * pof([10])
+//                                         10 * pof([])
+//                                                 1
+
+// pof([1,2,3,10])
+//         1 * 60
+//                 2 * 30
+//                           3 * 10
+//                                     10 * 1
+//                                         1
