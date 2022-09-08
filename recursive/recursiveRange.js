@@ -20,3 +20,20 @@ console.log(recursiveRange(6))
 // 21
 console.log(recursiveRange(10))
 // 55
+
+// recRange(6)
+//     6 + recRange(5)
+//                 5 + recRange(4)
+//                             4 + recRange(3)
+//                                         3 + recRange(2)
+//                                                     2 + recRange(1)
+//                                                                 1 + recRange(0)
+//                                                                         0
+
+// recRange(6)
+//     6 + 15
+//         5 + 10
+//             4 + 6
+//                 3 + 3
+//                     2 + 1
+//                         1 + 0
