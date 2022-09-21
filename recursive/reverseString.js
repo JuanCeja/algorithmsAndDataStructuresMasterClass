@@ -11,6 +11,9 @@ function reverse(str) {
     // base case
     if(str.length <= 1) return str;
 
+    // other base case method
+    // if(str.length === 0) return '';
+
     // recursive call with different input
     return reverse(str.slice(1)) + str[0]
 };
@@ -20,3 +23,6 @@ console.log(reverse('awesome'))
 
 console.log(reverse('rithmschool'))
 // output: 'loohcsmhtir'
+
+// reve(happy)
+        
