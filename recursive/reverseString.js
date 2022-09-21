@@ -11,7 +11,7 @@ function reverse(str) {
     // base case
     if(str.length <= 1) return str;
 
-    // different input
+    // recursive call with different input
     return reverse(str.slice(1)) + str[0]
 };
 
