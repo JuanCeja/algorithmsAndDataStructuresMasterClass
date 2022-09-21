@@ -11,7 +11,17 @@
 // ===========================================================
 
 function isPalindrome(str) {
+    // base case
+    if(str.length === 1) return true;
+    if(str.length === 2) return str[0] === str[1];
     
+    // recursive call with different input
+    if(str[0] === str[str.length-1]){
+        return isPalindrome(str.slice(1,-1))
+    }
+
+    // return false immeadiately if elements do not match in above if statement
+    return false;
 }
 
 console.log(isPalindrome('awesome')) // false
