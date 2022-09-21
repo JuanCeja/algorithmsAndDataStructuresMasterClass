@@ -23,11 +23,11 @@ console.log(power(2,2));
 console.log(power(2,4));
 // output 16
 
-// power(2,4)
-//         2 * power(2, 3)
-//                 2 * power(2, 2)
-//                             2 * power(2,1)
-//                                        2 * power(2,0)
+// power(2,4) => 16
+//         2 * power(2, 3) => 16
+//                 2 * power(2, 2) => 8
+//                             2 * power(2,1) => 4
+//                                        2 * power(2,0) => 2
 //                                                 1
 
 
