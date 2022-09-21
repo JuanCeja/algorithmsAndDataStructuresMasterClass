@@ -24,5 +24,10 @@ console.log(reverse('awesome'))
 console.log(reverse('rithmschool'))
 // output: 'loohcsmhtir'
 
-// reve(happy)
-        
+// rev(happy) = yppah
+//     rev(appy) + h => yppah
+//         rev(ppy) + a => yppa
+//             rev(py) + p => ypp
+//                 rev(y) + p => yp
+//                     rev('') + y => y
+//                         rev('')
