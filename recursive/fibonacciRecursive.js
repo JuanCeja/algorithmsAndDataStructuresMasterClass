@@ -13,7 +13,7 @@ function fib(n){
     // base case
     if(n < 3) return 1;
 
-    // different input
+    // recursive call with different input
     return fib(n - 1) + fib(n - 2)
 };
 

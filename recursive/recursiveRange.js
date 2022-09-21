@@ -12,7 +12,7 @@ function recursiveRange(num){
     // base case
     if(num === 0) return 0;
 
-    // different input
+    // recursive call with different input
     return num + recursiveRange(num - 1);
 };
 

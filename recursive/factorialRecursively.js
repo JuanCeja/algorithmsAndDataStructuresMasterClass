@@ -16,7 +16,7 @@ function factorial (num) {
     // base case
     if(num === 2) return 2;
 
-    // different input
+    // recursive call with different input
     return num * factorial(num - 1);
 };
 
