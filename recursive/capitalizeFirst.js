@@ -6,8 +6,16 @@
 
 // =====================================================================
 
-function capitalizeFirst() {
-    // add whatever parameters you deem necessary - good luck!
+function capitalizeWords(array) {
+    // create empty array
+    let newArray = [];
+
+    // basecase 
+    if(array.length < 1) return newArray;
+
+    newArray.push(array[0][0].toUpperCase() + array[0].slice(1));
+
+    return newArray.concat(capitalizeWords(array.slice(1)));
 }
 
-console.log(capitalizeFirst(['car','taco','banana'])); // ['Car','Taco','Banana']
+console.log(capitalizeWords(["car", "taco", "banana"])); // ['Car','Taco','Banana']
