@@ -23,8 +23,8 @@ function flatten(arr) {
         // else we push our element to our empty flattened array
 
         Array.isArray(element) 
-        ?flattened = flattened.concat(flatten(element))
-        :flattened.push(element);
+        ? flattened = flattened.concat(flatten(element))
+        : flattened.push(element);
 
     }
 
