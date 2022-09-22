@@ -13,8 +13,13 @@ function capitalizeWords(array) {
     // basecase 
     if(array.length < 1) return newArray;
 
+    // here capitalize the very first letter of the element
+    // then we add the remaining letters of the word to the capitalized letter
+    // then we push to our new array
     newArray.push(array[0][0].toUpperCase() + array[0].slice(1));
 
+    // we concat so we dont lose our previous newArray elements. 
+    // we then make our recursive call with our new input
     return newArray.concat(capitalizeWords(array.slice(1)));
 }
 
