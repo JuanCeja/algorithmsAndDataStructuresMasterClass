@@ -9,11 +9,15 @@
 
 // ===========================================================
 
-function flatten() {
+function flatten(arr) {
+    // base case
+    if(arr.length === 0) return [];
 
+    // recursive call with different input
+    return flatten(arr.slice(1)).concat(arr[0])
 }
 
 console.log(flatten([1, 2, 3, [4, 5] ])) // [1, 2, 3, 4, 5]
-console.log(flatten([1, [2, [3, 4], [[5]]]])) // [1, 2, 3, 4, 5]
-console.log(flatten([[1],[2],[3]])) // [1,2,3]
-console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])) // [1,2,3
+// console.log(flatten([1, [2, [3, 4], [[5]]]])) // [1, 2, 3, 4, 5]
+// console.log(flatten([[1],[2],[3]])) // [1,2,3]
+// console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]])) // [1,2,3
