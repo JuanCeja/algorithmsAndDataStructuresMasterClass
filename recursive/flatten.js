@@ -22,8 +22,10 @@ function flatten(arr) {
         // if element is an array we recall our recursive call with different input
         // else we push our element to our empty flattened array
 
-        Array.isArray(element) ? flattened = flattened.concat(flatten(element)) : flattened.push(element);
-        
+        Array.isArray(element) 
+        ?flattened = flattened.concat(flatten(element))
+        :flattened.push(element);
+
     }
 
     // return our flattened array
