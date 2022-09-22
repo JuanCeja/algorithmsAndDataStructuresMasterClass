@@ -20,14 +20,10 @@ function flatten(arr) {
         let element = arr[i];
         
         // if element is an array we recall our recursive call with different input
-        if(Array.isArray(element)){
-            flattened = flattened.concat(flatten(element));
-
         // else we push our element to our empty flattened array
-        } else {
-            flattened.push(element);
-        }
 
+        Array.isArray(element) ? flattened = flattened.concat(flatten(element)) : flattened.push(element);
+        
     }
 
     // return our flattened array
