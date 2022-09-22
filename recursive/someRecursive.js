@@ -22,8 +22,13 @@ function isGreaterTen(num){
     else return false;
 }
 
-function someRecursive() {
+function someRecursive(arr, func) {
+    // base case
+    if(arr.length === 0) return false;
+    if(func(arr[0])) return true;
 
+    // recursive call with different input
+    return someRecursive(arr.slice(1), func);
 }
 
 console.log(someRecursive([1, 2, 3, 4], isOdd)); // true
