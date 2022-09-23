@@ -26,18 +26,28 @@ var obj2 = {
 
 function nestedEvenSum(obj) {
     // create variable to add even numbers
+    let evenCount = 0;
 
     // loop through object
+    for(const element in obj) {
 
-    // check to see if element in the loop in an object
+        // check to see if element in the loop in an object
+        if(typeof obj[element] === 'object') {
 
-    // if it is an object we make our recursive call
+            // if it is an object we make our recursive call
+            evenCount += nestedEvenSum(obj[element]);
 
-    // if it is not a object we check to see if the value is even
-    // if value is even we add to our evenCount variable
+            // if it is not a object we check to see if the value is even
+        } else if (obj[element] % 2 === 0 && typeof obj[element] === 'number') {
+
+            // if value is even we add to our evenCount variable
+            evenCount += obj[element];
+        }
+    }
 
     // return our evenCount variable
+    return evenCount;
 }
 
-nestedEvenSum(obj1); // 6
-nestedEvenSum(obj2); // 10
+console.log(nestedEvenSum(obj1)); // 6
+console.log(nestedEvenSum(obj2)); // 10
