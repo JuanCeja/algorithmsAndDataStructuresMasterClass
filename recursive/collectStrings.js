@@ -21,7 +21,15 @@ const obj = {
 }
 
 function collectStrings (obj) {
+    // array that will hold our strings
+
+    // loop through obj
+
+    // if value of key is a string we push it into array
+
+    // else if value of key is an obj typeOf we make our recursive call
     
+    // return our array of strings
 };
 
 console.log(collectStrings(obj)); // ["foo", "bar", "baz"])
