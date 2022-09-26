@@ -20,4 +20,8 @@ const obj = {
     }
 }
 
+function collectStrings (obj) {
+    
+};
+
 console.log(collectStrings(obj)); // ["foo", "bar", "baz"])
