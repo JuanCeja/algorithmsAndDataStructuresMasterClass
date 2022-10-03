@@ -16,7 +16,19 @@
 // =====================================================================
 
 function linearSearch(arr, num) {
-    
+
+    // loop through our arr
+    for(let i = 0; i < arr.length; i++) {
+
+        // check if element is equal to our num
+        // if it is equal we return the index
+        if(arr[i] === num) return i;
+
+    }
+
+    // if loop goes through all of arr and finishes without returning a value we return -1
+    return -1;
+
 }
 
 console.log(linearSearch([10, 15, 20, 25, 30], 15)) // 1
