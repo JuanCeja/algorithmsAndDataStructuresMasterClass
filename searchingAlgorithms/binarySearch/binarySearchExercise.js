@@ -25,6 +25,7 @@ function binarySearch(arr, value) {
     // if value is less than mid, me make right our mid
     
     // if while loop finishes without returning a value return -1
+    
 }
 
 console.log(binarySearch([1, 2, 3, 4, 5], 2)); // 1
