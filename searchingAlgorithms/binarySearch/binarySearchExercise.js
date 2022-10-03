@@ -14,18 +14,31 @@
 
 function binarySearch(arr, value) {
     // create our left and right variables
+    let left = 0;
+    let right = arr.length - 1;
 
     // create our while loop 
-    // create our mid point
+    while(left <= right) {
+        
+        // create our mid point
+        let mid = Math.floor((left + right) / 2);
 
-    // if mid is equal to value return index
+        // if mid is equal to value return index
+        if(value === arr[mid]) return mid;
 
-    // if value is greater than mid, me make left our mid
+        // if value is greater than mid, me make left our mid
+        else if(value > arr[mid]) {
+            left = mid + 1;
+        } 
 
-    // if value is less than mid, me make right our mid
-    
+        // if value is less than mid, me make right our mid
+        else if(value < arr[mid]) {
+            right = mid;
+        }
+    }
+
     // if while loop finishes without returning a value return -1
-    
+    return -1;
 }
 
 console.log(binarySearch([1, 2, 3, 4, 5], 2)); // 1
