@@ -33,7 +33,7 @@ function binarySearch(arr, value) {
 
         // if value is less than mid, me make right our mid
         else if(value < arr[mid]) {
-            right = mid;
+            right = mid - 1;
         }
     }
 
