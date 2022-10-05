@@ -1,14 +1,12 @@
 function insertionSort(arr) {
     for(let i = 1; i < arr.length; i++){
-
-        let currentVal = arr[i];
-        let index = i;
-
-        for(let j = i - 1; j >= 0 && arr[j] > currentVal; j--){
-            arr[j + 1] = arr[j];
-            index = j
+        for(let j = i; j > 0; j--){
+            if(arr[j] < arr[j-1]){
+                [arr[j], arr[j-1]] = [arr[j-1], arr[j]]
+            } else {
+                break;
+            }
         }
-        arr[index] = currentVal;
     }
     return arr;
 };
