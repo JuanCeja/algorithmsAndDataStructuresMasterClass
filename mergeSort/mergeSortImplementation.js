@@ -1,5 +1,5 @@
 
-// ========= MERGING FUNCTION ONLY ===========
+// ========= OUR HELPER MERGING FUNCTION ONLY ===========
 
 function merge(arr1, arr2){
     // create our pointer variables
@@ -12,7 +12,7 @@ function merge(arr1, arr2){
     while(i < arr1.length && j < arr2.length){
 
         // compare values and push the smaller value until one arrays reaches its end
-        if(arr2[j] > arr1[i]){
+        if(arr1[i] < arr2[j]){
             mergedArray.push(arr1[i]);
             i++;
         } else {
