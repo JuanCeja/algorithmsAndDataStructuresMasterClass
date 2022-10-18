@@ -9,7 +9,7 @@ function pivot(arr, start = 0, end = arr.length - 1) {
   let swapIndex = start;
 
   // loop through the array from the start until the end
-  for(let i = 1; i < end + 1; i++) {
+  for(let i = start + 1; i < end + 1; i++) {
 
     // if the pivot is greater then the current array element, increment the pivot index variable and then swap the current element with the element at the pivot index
     if(pivot > arr[i]){
@@ -31,7 +31,6 @@ function pivot(arr, start = 0, end = arr.length - 1) {
   arr[start] = temp;
 
   // return the pivot index
-  console.log(arr)
   return swapIndex;
 
 };
@@ -39,11 +38,24 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 // ======================== QUICK SORT FUNCTION =========================
 
 function quickSort(arr, left = 0, right = arr.length - 1){
-  // call the pivot helper on the array
-  
-  // when the helper returns to you the updated pivot index, recursively call the pivot helper on the subarray to the left of that index, and the subarray to the right of that index
 
-  // your base case occurs when you consider a subarray with less than 2 elements
+  // we use our if statement here so we dont get into an infinite loop
+  if(left < right) {
+
+    // heres is our first call on our complete array which gives us our starting pivotIndex variable
+    let pivotIndex = pivot(arr, left, right) // 3
+
+    // LEFT
+    // here we make our recursive call on the side of the array thats left of our pivot index
+    quickSort(arr, left, pivotIndex - 1);
+    
+    // RIGHT
+    // here we make our recursive call on the side of the array thats right of our pivot index
+    quickSort(arr, pivotIndex + 1, right);
+  }
+
+  return arr;
 };
 
-console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]))
+// console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]));
+console.log(quickSort([4, 8, 2, 1, 5, 7, 6, 3]));
