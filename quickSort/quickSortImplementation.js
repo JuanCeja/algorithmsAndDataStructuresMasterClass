@@ -38,6 +38,12 @@ function pivot(arr, start = 0, end = arr.length - 1) {
 
 // ======================== QUICK SORT FUNCTION =========================
 
+function quickSort(arr, left = 0, right = arr.length - 1){
+  // call the pivot helper on the array
+  
+  // when the helper returns to you the updated pivot index, recursively call the pivot helper on the subarray to the left of that index, and the subarray to the right of that index
 
+  // your base case occurs when you consider a subarray with less than 2 elements
+};
 
 console.log(pivot([4, 8, 2, 1, 5, 7, 6, 3]))
