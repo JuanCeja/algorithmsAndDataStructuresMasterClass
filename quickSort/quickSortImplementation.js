@@ -15,20 +15,27 @@ function pivot(arr, start = 0, end = arr.length - 1) {
     if(pivot > arr[i]){
       swapIndex++;
 
-      let temp = arr[i];
-      arr[i] = arr[swapIndex];
-      arr[swapIndex] = temp;
+      // ES6 2016 swap version
+      [arr[i], arr[swapIndex]] = [arr[swapIndex], arr[i]]
+      
+      // let temp = arr[i];
+      // arr[i] = arr[swapIndex];
+      // arr[swapIndex] = temp;
     }
-
+    
   }
   
   // swap the starting element(i.e. the pivot) index
   // we need to swap our current pivot to its correct place
   // we currently have [4,2,1,3,5,7,6,8] after swap we get [3,2,1,4,5,7,6,8]
   // after the swap we put the pivot in its correct place on the array
-  let temp = arr[swapIndex];
-  arr[swapIndex] = arr[start];
-  arr[start] = temp;
+  
+  // ES6 2016 swap version
+  [arr[swapIndex], arr[start]] = [arr[start], arr[swapIndex]]
+
+  // let temp = arr[swapIndex];
+  // arr[swapIndex] = arr[start];
+  // arr[start] = temp;
 
   // return the pivot index
   return swapIndex;
