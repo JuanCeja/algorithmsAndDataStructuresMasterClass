@@ -24,10 +24,19 @@ class SinglyLinkedList{
 
     // this is our push method
     push(val){
-        
+
+        // create a new node using the value passed to the function
+
+        // if there is no head property on the list, set the head and tail to be the new node created
+        // otherwise set the next property on the tail to be the new node and set the tail property on the list to be the newly created node
+
+        // increment the length by one
+
     }
 }
 
 let list = new SinglyLinkedList();
 list.push('Hello');
 list.push('There');
+
+console.log(list);
