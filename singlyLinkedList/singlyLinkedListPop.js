@@ -58,6 +58,11 @@ class SinglyLinkedList{
         // decrement length by 1
         this.length--;
 
+        // this is a base case incase the list only has 1 item
+        if(this.length === 0) {
+            this.head = null;
+            this.tail = null;
+        }
         
         // return the value of the node removed
         return current;
