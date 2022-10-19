@@ -36,6 +36,25 @@ class SinglyLinkedList{
     }
 
     pop(){
+        // if there are no nodes in the list, return undefined
 
+        // loop through the list until you reach the tail
+
+        // set the next property of the 2nd to the last node to be bull 
+
+        // set the tail to be the 2nd to the last node
+
+        // decrement length by 1
+
+        // return the value of the node removed
     }
 }
+
+let list = new SinglyLinkedList();
+list.push('Hello');
+list.push('There');
+list.push('Juan');
+list.push('Delete this!');
+list.pop();
+
+console.log(list);
