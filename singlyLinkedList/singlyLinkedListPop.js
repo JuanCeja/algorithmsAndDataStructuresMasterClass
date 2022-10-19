@@ -37,24 +37,39 @@ class SinglyLinkedList{
 
     pop(){
         // if there are no nodes in the list, return undefined
+        if(!this.head) return undefined;
+
+        // variables to keep track of our location/also so we can use them to loop through our list
+        let current = this.head;
+        let newTail = current;
 
         // loop through the list until you reach the tail
-
-        // set the next property of the 2nd to the last node to be bull 
+        while(current.next) {
+            newTail = current;
+            current = current.next;
+        }
 
         // set the tail to be the 2nd to the last node
+        this.tail = newTail;
+
+        // set the next property of the 2nd to the last node to be bull 
+        this.tail.next = null;
 
         // decrement length by 1
+        this.length--;
 
+        
         // return the value of the node removed
+        return current;
     }
 }
 
 let list = new SinglyLinkedList();
-list.push('Hello');
-list.push('There');
-list.push('Juan');
-list.push('Delete this!');
-list.pop();
+// list.push('Hello');
+// list.push('There');
+// list.push('Juan');
+// list.push('Delete this!');
+// list.pop();
 
+console.log(list.pop());
 console.log(list);
