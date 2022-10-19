@@ -35,16 +35,35 @@ function mostDigits(arr) {
 
 function radixSort(arr){
 
-    // figure our how many digits the largest number has 
+    // figure our how many digits the largest number has
+    let maxDigitCount = mostDigits(arr);
     
     // loop from k=0 up to this largest number of digits
+    for(let k = 0; k < maxDigitCount; k++) {
 
-    // for each iteration of the loop:
-        
+        // for each iteration of the loop:
         // create buckets for each digit(0 to 9)
-        // place each number in the corresponding bucket based on its kth digit
+        let digitBuckets = Array.from({length: 10}, () => []);
 
-    // replace our existing array with values in our buckets, starting with 0 and going up to 9
+        // place each number in the corresponding bucket based on its kth digit
+        for(let i = 0; i < arr.length; i++) {
+            
+            // we use our function her to get the digit at kth place 
+            let digit = getDigit(arr[i], k)
+
+            // here we push the arr element to its corresponding bucket based on its kth digit value
+            digitBuckets[digit].push(arr[i]);
+        }
+
+        // here we reform our values into a new array. 
+        arr = [].concat(...digitBuckets);
+        
+        // and then repeat on the next digit of all those values until we reach the last number of the longest number in the array
+    }
+
     
     // return our sorted list
+    return arr;
 };
+
+console.log(radixSort([23, 345, 5467, 12, 2345, 9853]));
