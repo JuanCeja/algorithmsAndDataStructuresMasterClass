@@ -55,20 +55,28 @@ class SinglyLinkedList {
     }
 
     shift(){
-        
+        // if there are no nodes, return undefined
+
+        // store the current head property in a variable
+
+        // set the head property to be the current head's next property
+
+        // decrement the length by 1
+
+        // return the value of the node removed
     }
 }
 
 let list = new SinglyLinkedList();
+list.push('Shift this!');
 list.push('Hello');
 list.push('There');
 list.push('Juan');
-list.push('Delete this!');
 
-console.log('before pop', list);
+console.log('before shift', list);
 
 console.log('===============================================')
-console.log('this is the deleted node', list.pop());
+console.log('this is the shifted node', list.shift());
 console.log('===============================================')
 
-console.log('after pop', list);
+console.log('after shift', list);
