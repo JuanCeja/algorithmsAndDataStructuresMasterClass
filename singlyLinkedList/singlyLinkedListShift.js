@@ -56,14 +56,19 @@ class SinglyLinkedList {
 
     shift(){
         // if there are no nodes, return undefined
+        if(!this.head) return undefined;
 
         // store the current head property in a variable
+        let prevHead = this.head;
 
         // set the head property to be the current head's next property
+        this.head = this.head.next;
 
         // decrement the length by 1
+        this.length--;
 
         // return the value of the node removed
+        return prevHead;
     }
 }
 
