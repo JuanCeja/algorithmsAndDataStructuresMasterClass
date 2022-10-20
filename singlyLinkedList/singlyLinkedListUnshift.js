@@ -14,25 +14,24 @@ class Node {
 
 // ============================ THIS IS OUR SINGLY LINKED LIST ===============================
 
-
 class SinglyLinkedList {
-    constructor(){
+    constructor() {
         this.head = null;
         this.tail = null;
         this.length = 0;
     }
 
-    push(val){
-        let newNode = new Node(val);
+    push(val) {
+        let newNode = Node(val);
 
-        if(this.head === null){
+        if(this.head === null) {
             this.head = newNode;
             this.tail = newNode;
         } else {
             this.tail.next = newNode;
             this.tail = newNode;
+            this.length++;
         }
-        this.length++;
     }
 
     pop(){
@@ -55,40 +54,20 @@ class SinglyLinkedList {
     }
 
     shift(){
-        // if there are no nodes, return undefined
         if(!this.head) return undefined;
 
-        // store the current head property in a variable
         let prevHead = this.head;
 
-        // set the head property to be the current head's next property
         this.head = prevHead.next;
-
-        // decrement the length by 1
         this.length--;
-
-        // in the case if theres no remaining nodes
-        if(this.length === 0){
-            this.tail === null;
+        if(this.length === 0) {
+            this.head = null;
+            this.tail = null;
         }
+        return prevHead
+    }
 
-        // return the value of the node removed
-        return prevHead;
+    unshift(){
+        
     }
 }
-
-let list = new SinglyLinkedList();
-list.push('Shift this!');
-list.push('Hello');
-list.push('There');
-list.push('Juan');
-list.push('Pop this!');
-
-console.log('before shift', list);
-
-console.log('===============================================')
-console.log('shift this node', list.shift())
-console.log('pop this node', list.pop())
-console.log('===============================================')
-
-console.log('after shift', list);   
