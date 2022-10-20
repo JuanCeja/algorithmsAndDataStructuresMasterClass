@@ -81,6 +81,12 @@ class SinglyLinkedList {
     }
 
     get(val) {
-        
+        // this function should accept an index
+
+        // create variable as a counter to keep track of the index
+
+        // if the index is less than zero or greater than or equal to the length of the list, return null
+
+        // loop through the list until you reach the index and return the node at the specific index
     }
 }
