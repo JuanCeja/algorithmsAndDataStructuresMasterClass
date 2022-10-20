@@ -67,7 +67,17 @@ class SinglyLinkedList {
         return prevHead
     }
 
-    unshift(){
-        
+    unshift(val){
+        // this function should accept a value
+
+        // create a new node using the value passed to the function 
+
+        // if there is no head property on the list, set the head and tail to be the newly created node
+
+        // set the head property on the list to be that newly created node
+
+        // increment the length by 1
+
+        // return the linked list
     }
 }
