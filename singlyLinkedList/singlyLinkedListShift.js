@@ -67,6 +67,12 @@ class SinglyLinkedList {
         // decrement the length by 1
         this.length--;
 
+        // in the case if theres no remaining nodes
+        if(this.length === 0){
+            this.head === null;
+            this.tail === null;
+        }
+
         // return the value of the node removed
         return prevHead;
     }
