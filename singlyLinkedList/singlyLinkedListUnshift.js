@@ -22,7 +22,7 @@ class SinglyLinkedList {
     }
 
     push(val) {
-        let newNode = Node(val);
+        let newNode = new Node(val);
 
         if(this.head === null) {
             this.head = newNode;
@@ -30,8 +30,8 @@ class SinglyLinkedList {
         } else {
             this.tail.next = newNode;
             this.tail = newNode;
-            this.length++;
         }
+        this.length++;
     }
 
     pop(){
@@ -68,16 +68,40 @@ class SinglyLinkedList {
     }
 
     unshift(val){
-        // this function should accept a value
-
         // create a new node using the value passed to the function 
+        let newNode = new Node(val);
 
         // if there is no head property on the list, set the head and tail to be the newly created node
+        if(!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        } else {
 
-        // set the head property on the list to be that newly created node
+            // we had this else statement because if we dont this.head.next will keep on pointing back to its head
+
+            // set the head property on the list to be that newly created node
+            newNode.next = this.head;
+            this.head = newNode;
+        }
 
         // increment the length by 1
+        this.length++;
 
         // return the linked list
+        return this;
     }
 }
+
+let list = new SinglyLinkedList();
+
+list.push('Hello');
+list.push('there');
+list.push('Juan');
+
+console.log('before unshift', list);
+list.unshift('Unshifted to the beginning')
+
+console.log('===============================================')
+console.log('===============================================')
+
+console.log('after unshift', list);

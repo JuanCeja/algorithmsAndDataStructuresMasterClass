@@ -77,18 +77,32 @@ class SinglyLinkedList {
     }
 }
 
+// let list = new SinglyLinkedList();
+// list.push('Shift this!');
+// list.push('Hello');
+// list.push('There');
+// list.push('Juan');
+// list.push('Pop this!');
+
+// console.log('before shift', list);
+
+// console.log('===============================================')
+// console.log('shift this node', list.shift())
+// console.log('pop this node', list.pop())
+// console.log('===============================================')
+
+// console.log('after shift', list);   
+
 let list = new SinglyLinkedList();
-list.push('Shift this!');
 list.push('Hello');
-list.push('There');
-list.push('Juan');
-list.push('Pop this!');
+list.push('there');
 
-console.log('before shift', list);
+console.log('before unshift', list);
+
+
+// list.unshift('Unshifted to the beginning')
 
 console.log('===============================================')
-console.log('shift this node', list.shift())
-console.log('pop this node', list.pop())
 console.log('===============================================')
 
-console.log('after shift', list);   
+console.log('after unshift', list);   
