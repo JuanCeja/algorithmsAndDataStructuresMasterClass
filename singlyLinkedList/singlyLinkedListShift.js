@@ -14,7 +14,8 @@ class Node {
 
 // ============================ THIS IS OUR SINGLY LINKED LIST ===============================
 
-class SinglyLinkedList{
+
+class SinglyLinkedList {
     constructor(){
         this.head = null;
         this.tail = null;
@@ -31,41 +32,30 @@ class SinglyLinkedList{
             this.tail.next = newNode;
             this.tail = newNode;
         }
-
         this.length++;
     }
 
     pop(){
-        // if there are no nodes in the list, return undefined
         if(!this.head) return undefined;
 
-        // variables to keep track of our location/also so we can use them to loop through our list
         let current = this.head;
         let newTail = current;
-
-        // loop through the list until you reach the tail
-        while(current.next) {
+        while(current.next){
             newTail = current;
             current = current.next;
         }
-
-        // set the tail to be the 2nd to the last node
         this.tail = newTail;
-
-        // set the next property of the 2nd to the last node to be bull 
         this.tail.next = null;
-
-        // decrement length by 1
         this.length--;
-
-        // this is a base case incase the list only has 1 item
-        if(this.length === 0) {
+        if(this.length === 0){
             this.head = null;
             this.tail = null;
         }
-        
-        // return the value of the node removed 
         return current;
+    }
+
+    shift(){
+        
     }
 }
 
