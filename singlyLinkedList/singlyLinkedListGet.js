@@ -80,13 +80,29 @@ class SinglyLinkedList {
         return this;
     }
 
-    get(val) {
-        // this function should accept an index
-
-        // create variable as a counter to keep track of the index
+    get(index) {
 
         // if the index is less than zero or greater than or equal to the length of the list, return null
+        if(index < 0 || index >= this.length) return null;
 
+        // our counter variable and our current variable so we can use to loop 
+        let counter = 0;
+        let current = this.head;
+        
         // loop through the list until you reach the index and return the node at the specific index
+        while(counter !== index){
+            current = current.next;
+            counter++;
+        }
+        // we return the node at our index position
+        return current;
     }
 }
+
+let list = new SinglyLinkedList();
+list.push('Hello');
+list.push('Goodbye');
+list.push('!');
+list.push('<3');
+list.push(':)');
+console.log(list.get(4));
