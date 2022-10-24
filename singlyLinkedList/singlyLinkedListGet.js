@@ -100,9 +100,12 @@ class SinglyLinkedList {
 }
 
 let list = new SinglyLinkedList();
+list.push(':)');
 list.push('Hello');
 list.push('Goodbye');
 list.push('!');
 list.push('<3');
 list.push(':)');
-console.log(list.get(4));
+
+console.log(list.get(3));
+console.log(list);
