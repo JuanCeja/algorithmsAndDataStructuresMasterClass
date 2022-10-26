@@ -119,6 +119,18 @@ class SinglyLinkedList {
     }
 
     remove(index){
-        
+        // if the index is less than zero or greater than the length, return undefined
+
+        // in the index is the same as the length - 1, we POP
+
+        // if the index is 0, SHIFT
+
+        // otherwise, using the GET method, access the node at the index - 1
+
+        // set the next property on that node to be the next of the next node
+
+        // decrement the length
+
+        // return the value if the node removed
     }
 }
