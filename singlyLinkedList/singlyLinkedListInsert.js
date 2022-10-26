@@ -106,7 +106,21 @@ class SinglyLinkedList {
         }
 
         insert(index, value){
+            // if the index is less than zero or greater than the length, return false
 
+            // if the index is the same as the length, PUSH a new node to the end of the list
+
+            // if the index is 0, UNSHIFT a new node to the start of the list
+
+            // otherwise , using the GET method, access the node at the index - 1
+
+            // set the next property on that node to be the new node
+
+            // set the next property on the new node to be the previous next 
+            
+            // increment the length
+
+            // return true
         }
 }
 
