@@ -20,10 +20,10 @@ class SinglyLinkedList {
         this.tail = null;
         this.length = 0;
     }
-
+    
     push(val){
         let newNode = new Node(val);
-
+        
         if(!this.head) {
             this.head = newNode;
             this.tail = newNode;
@@ -59,7 +59,7 @@ class SinglyLinkedList {
         let prevHead = this.head;
         this.head = prevHead.next;
         this.length--;
-        if(this.length === 0) {
+        if(this.length === 0){
             this.head = null;
             this.tail = null;
         }
@@ -69,7 +69,7 @@ class SinglyLinkedList {
     unShift(val){
         let newNode = new Node(val);
 
-        if(!this.head) {
+        if(!this.head){
             this.head = newNode;
             this.tail = this.head;
         } else {
@@ -80,32 +80,23 @@ class SinglyLinkedList {
         return this;
     }
 
-    get(index) {
-
-        // if the index is less than zero or greater than or equal to the length of the list, return null
+    get(index){
         if(index < 0 || index >= this.length) return null;
 
-        // our counter variable and our current variable so we can use to loop 
         let counter = 0;
         let current = this.head;
-        
-        // loop through the list until you reach the index and return the node at the specific index
-        while(counter !== index){
+        if(counter !== index){
             current = current.next;
-            counter++;
+            counter++
         }
-        // we return the node at our index position
         return current;
     }
+
+    set(index, value){
+        // use our get function to find the specific node
+
+        // if the node is not found, return false
+
+        // if the node is found, set the value of that node to be the value passed to the function and return true
+    }
 }
-
-let list = new SinglyLinkedList();
-list.push(':)');
-list.push('Hello');
-list.push('Goodbye');
-list.push('!');
-list.push('<3');
-list.push(':)');
-
-console.log('get this',list.get(3));
-console.log(list);
