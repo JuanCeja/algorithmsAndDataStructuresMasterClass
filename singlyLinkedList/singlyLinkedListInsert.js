@@ -104,6 +104,10 @@ class SinglyLinkedList {
         }
         return false;
         }
+
+        insert(index, value){
+
+        }
 }
 
 let list = new SinglyLinkedList();
