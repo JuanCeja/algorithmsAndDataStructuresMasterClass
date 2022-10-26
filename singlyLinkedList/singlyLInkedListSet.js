@@ -93,10 +93,13 @@ class SinglyLinkedList {
     }
 
     set(index, value){
-        // use our get function to find the specific node
+        let foundNode = this.get(index);
 
-        // if the node is not found, return false
-
-        // if the node is found, set the value of that node to be the value passed to the function and return true
-    }
+        if(foundNode){
+            foundNode.val = value;
+            return true;
+        }
+        return false;
+        }
+        
 }
