@@ -85,7 +85,7 @@ class SinglyLinkedList {
 
         let counter = 0;
         let current = this.head;
-        if(counter !== index){
+        while(counter !== index){
             current = current.next;
             counter++
         }
@@ -93,13 +93,29 @@ class SinglyLinkedList {
     }
 
     set(index, value){
+        // set a variable that holds our return value from our get method.
+        // should return a node or null
         let foundNode = this.get(index);
 
+        // if our value is true reassign our value and return true otherwise return false
         if(foundNode){
             foundNode.val = value;
             return true;
         }
         return false;
         }
-        
 }
+
+let list = new SinglyLinkedList();
+list.push("I'm head :)");
+list.push('Hello');
+list.push('Goodbye');
+list.push('!');
+list.push('<3');
+list.push("I'm tail :)");
+console.log(list)
+
+list.set(0, "I'm the new head");
+list.set(5, "I'm the new tail");
+console.log('=============================== THIS IS THE NEW LIST ==================================')
+console.log(list)
