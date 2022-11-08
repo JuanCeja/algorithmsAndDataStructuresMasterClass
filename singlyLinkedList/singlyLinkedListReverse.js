@@ -130,7 +130,21 @@ class SinglyLinkedList {
     }
 
     reverse(){
-        
+        // swap the head and tail
+
+        // create next and prev variables
+
+        // create a variable called node and initialize it to the head property
+
+        // loop through the list
+
+        // set next to be the next property on whatever node is
+
+        // set the next property on the node to be whatever prev is
+
+        // set prev to be the value of the node variable
+
+        // set the node variable to be the value of the next variable
     }
 }
 
