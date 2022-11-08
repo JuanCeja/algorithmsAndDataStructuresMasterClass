@@ -144,6 +144,8 @@ class SinglyLinkedList {
         // create a variable called current and initialize it to the head property
 
         // loop through the list
+        // we can also use a while loop. 
+        // it would go while(current){code goes heres}
         for (let i = 0; i < this.length; i++) {
             // set next to be the next property on whatever current is
             next = current.next;
@@ -157,7 +159,7 @@ class SinglyLinkedList {
             // set the current variable to be the value of the next variable
             current = next;
         }
-
+        // this will return our new reversed singly linked list
         return this;
     }
 
