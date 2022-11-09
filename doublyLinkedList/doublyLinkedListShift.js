@@ -45,7 +45,21 @@ class DoublyLinkedList {
     }
 
     shift(){
-        
+        // if length is 0 return undefined
+
+        // store the current head property in a variable
+
+        // if length his 1 set head and tail to be null
+
+        // update the head to be the next of the old head
+
+        // set the heads prev property to null
+
+        // set the old heads next to null
+
+        // decrement the length by 1
+
+        // return the old head
     }
 }
 
