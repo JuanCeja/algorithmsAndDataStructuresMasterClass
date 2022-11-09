@@ -58,7 +58,19 @@ class DoublyLinkedList {
     }
 
     unshift(val){
-        
+        // create a new node with the val passed
+
+        // if the length is 0 set head and tail to be new node
+
+        // set the prev property on the head of the list to be the new node
+
+        // set the next property on the new node to be the head property
+
+        // update the head to be the new node
+
+        // increment length by 1
+
+        // return the list
     }
 }
 
