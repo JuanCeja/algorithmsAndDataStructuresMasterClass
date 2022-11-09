@@ -44,22 +44,35 @@ class DoublyLinkedList {
         return poppedNode;
     }
 
-    shift(){
+    shift() {
         // if length is 0 return undefined
+        if (this.length === 0) return undefined;
 
         // store the current head property in a variable
+        let oldHead = this.head;
 
-        // if length his 1 set head and tail to be null
+        // if length is 1 set head and tail to be null
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            
+            // update the head to be the next of the old head
+            this.head = oldHead.next;
 
-        // update the head to be the next of the old head
+            // set the heads prev property to null
+            this.head.prev = null;
 
-        // set the heads prev property to null
-
-        // set the old heads next to null
+            // set the old heads next and prev to null to eliminate all ties
+            oldHead.next = null;
+            oldHead.prev = null;
+        }
 
         // decrement the length by 1
+        this.length--;
 
         // return the old head
+        return oldHead;
     }
 }
 
@@ -67,9 +80,9 @@ let list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-console.log('before pop === ', list);
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log('after pop === ', list);
+console.log('before shift === ', list);
+console.log(list.shift());
+console.log(list.shift());
+console.log(list.shift());
+console.log(list.shift());
+console.log('after shift === ', list);
