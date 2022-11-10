@@ -92,8 +92,11 @@ class DoublyLinkedList {
         return current;
     }
 
-    set(val){
-
+    set(val, idx){
+        // create a variable which is the result of the GET method at the index passed to the function
+            // if the GET method returns a valid node, set the value of that node to be the value passed to the function
+            // return true
+        // return false
     };
 }
 
