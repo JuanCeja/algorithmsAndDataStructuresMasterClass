@@ -15,7 +15,7 @@ class DoublyLinkedList {
 
     push(val) {
         let newNode = new Node(val);
-        if (this.length === 0) {
+        if (!this.head) {
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -57,30 +57,22 @@ class DoublyLinkedList {
         return oldHead;
     }
 
-    unshift(val) {
-        // create a new node with the val passed
+    unshift(val){
         let newNode = new Node(val);
-
-        // if the length is 0 set head and tail to be new node
-        if (this.length === 0) {
+        if(this.length === 0) {
             this.head = newNode;
             this.tail = newNode;
         } else {
-            // set the prev property on the head of the list to be the new node
             this.head.prev = newNode;
-
-            // set the next property on the new node to be the head property
             newNode.next = this.head;
-
-            // update the head to be the new node
             this.head = newNode;
         }
-
-        // increment length by 1
         this.length++;
-
-        // return the list
         return this;
+    }
+
+    get(val){
+        
     }
 }
 
