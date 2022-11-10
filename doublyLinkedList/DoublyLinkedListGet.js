@@ -57,9 +57,9 @@ class DoublyLinkedList {
         return oldHead;
     }
 
-    unshift(val){
+    unshift(val) {
         let newNode = new Node(val);
-        if(this.length === 0) {
+        if (this.length === 0) {
             this.head = newNode;
             this.tail = newNode;
         } else {
@@ -71,17 +71,40 @@ class DoublyLinkedList {
         return this;
     }
 
-    get(val){
+    get(idx) {
         // if the index is less than 0 or greater or equal to the length, return null
+        if (idx < 0 || idx >= this.length) return null;
 
+        let count, current;
         // if the index is less than or equal to half the length of the list 
 
-            // loop through the list starting from the head and loop towards the midde
-            // return the node once found
+        if (idx <= this.length / 2) {
 
-        // if the index is greater than half the length of the list
+            // set count to 0 and current to the head so we start from the head
+            count = 0;
+            current = this.head;
+
+            // loop through the list starting from the head and loop towards the middle
+            while (count !== idx) {
+                current = current.next;
+                count++
+            }
+        } else {
+
+            // OTHERWISE if the index is greater than half the length of the list
+            // set count to the last element in the list and current to the tail so we start from the tail
+            count = this.length - 1;
+            current = this.tail;
+
             // loop through the list starting from the tail and loop towards the middle
-            // return the node once it is found
+            while (count !== idx) {
+                current = current.prev;
+                count--;
+            }
+        }
+
+        // return the node once it is found
+        return current;
     }
 }
 
@@ -89,9 +112,6 @@ let list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-console.log('before pop === ', list);
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log('after pop === ', list);
+list.push('get this');
+list.push(5);
+console.log(list.get(3));
