@@ -72,17 +72,26 @@ class DoublyLinkedList {
     }
 
     get(val){
-        
+        // if the index is less than 0 or greater or equal to the length, return null
+
+        // if the index is less than or equal to half the length of the list 
+
+            // loop through the list starting from the head and loop towards the midde
+            // return the node once found
+
+        // if the index is greater than half the length of the list
+            // loop through the list starting from the tail and loop towards the middle
+            // return the node once it is found
     }
 }
 
 let list = new DoublyLinkedList();
-list.unshift(1);
-list.unshift(2);
-list.unshift(3);
-console.log('before shift === ', list);
-console.log(list.shift());
-console.log(list.shift());
-console.log(list.shift());
-console.log(list.shift());
-console.log('after shift === ', list);
+list.push(1);
+list.push(2);
+list.push(3);
+console.log('before pop === ', list);
+console.log(list.pop());
+console.log(list.pop());
+console.log(list.pop());
+console.log(list.pop());
+console.log('after pop === ', list);
