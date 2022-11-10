@@ -101,20 +101,32 @@ class DoublyLinkedList {
         return false;
     };
 
-    insert(idx, val){
-        // if the index is less than 0 or greater than or equal to the length return false
+    insert(idx, val) {
+        // if the index is less than 0 or greater than the length return false
+        if (idx < 0 || idx > this.length) return false;
 
         // if the index is 0, UNSHIFT
+        else if (idx === 0) return this.unshift(val);
 
         // if the index is the same as the length, PUSH
+        else if (idx === this.length) return this.push(val);
 
-        // use the GET method to access teh index - 1
+        else {
+            let newNode = new Node(val);
 
-        // set the next and prev properties on the correct nodes to link everything together
+            // use the GET method to access teh index - 1
+            let prevNode = this.get(idx - 1);
 
+            // set the next and prev properties on the correct nodes to link everything together
+            newNode.next = prevNode.next;
+            newNode.prev = prevNode;
+            newNode.next.prev = newNode;
+            prevNode.next = newNode;
+        }
         // increment the length
-
+        this.length++;
         // return true
+        return true;
     }
 }
 
@@ -122,8 +134,7 @@ let list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-list.push('change this to 4');
 list.push(5);
-console.log('before set', list);
-console.log(list.set(3, 'this is now 4'));
-console.log('after set', list);
+console.log('before insert', list);
+console.log(list.insert(4, 4));
+console.log('after insert', list);
