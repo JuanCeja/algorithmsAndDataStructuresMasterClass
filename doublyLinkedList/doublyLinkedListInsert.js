@@ -102,7 +102,19 @@ class DoublyLinkedList {
     };
 
     insert(idx, val){
-        
+        // if the index is less than 0 or greater than or equal to the length return false
+
+        // if the index is 0, UNSHIFT
+
+        // if the index is the same as the length, PUSH
+
+        // use the GET method to access teh index - 1
+
+        // set the next and prev properties on the correct nodes to link everything together
+
+        // increment the length
+
+        // return true
     }
 }
 
