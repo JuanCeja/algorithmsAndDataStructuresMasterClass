@@ -92,11 +92,20 @@ class DoublyLinkedList {
         return current;
     }
 
-    set(val, idx){
+    set(idx, val) {
+
         // create a variable which is the result of the GET method at the index passed to the function
+        let foundNode = this.get(idx);
+        if (foundNode !== null) {
+
             // if the GET method returns a valid node, set the value of that node to be the value passed to the function
+            foundNode.val = val;
+
             // return true
+            return true;
+        }
         // return false
+        return false;
     };
 }
 
@@ -104,6 +113,8 @@ let list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-list.push('get this');
+list.push('change this to 4');
 list.push(5);
-console.log(list.get(3));
+console.log('before set', list);
+console.log(list.set(3, 'this is now 4'));
+console.log('after set', list);
