@@ -119,7 +119,21 @@ class DoublyLinkedList {
     }
 
     remove(idx){
-        
+        // if the index is less than zero or greater than or equal to the length return undefined
+
+        // if the index is 0, SHIFT
+
+        // if the index is the same as the length - 1, POP
+
+        // use the GET method to retrieve the item to be removed
+
+        // update the next and prev properties to remove the found node from the list
+
+        // set the next and prev to null on the found node
+
+        // decrement the length
+
+        // return the removed node
     }
 }
 
