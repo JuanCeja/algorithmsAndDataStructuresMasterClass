@@ -106,10 +106,10 @@ class DoublyLinkedList {
         if (idx < 0 || idx > this.length) return false;
 
         // if the index is 0, UNSHIFT
-        else if (idx === 0) return this.unshift(val);
+        else if (idx === 0) return !!this.unshift(val);
 
         // if the index is the same as the length, PUSH
-        else if (idx === this.length) return this.push(val);
+        else if (idx === this.length) return !!this.push(val);
 
         else {
             let newNode = new Node(val);
@@ -136,5 +136,5 @@ list.push(2);
 list.push(3);
 list.push(5);
 console.log('before insert', list);
-console.log(list.insert(4, 4));
+console.log(list.insert(-9, 'inserted'));
 console.log('after insert', list);
