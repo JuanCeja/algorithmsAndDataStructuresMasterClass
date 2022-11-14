@@ -118,22 +118,34 @@ class DoublyLinkedList {
         return true;
     }
 
-    remove(idx){
+    remove(idx) {
         // if the index is less than zero or greater than or equal to the length return undefined
+        if (idx < 0 || idx >= this.length) return undefined;
 
         // if the index is 0, SHIFT
+        if (idx === 0) return this.shift();
 
         // if the index is the same as the length - 1, POP
+        if(idx === this.length - 1) return this.pop();
 
         // use the GET method to retrieve the item to be removed
+        let removedNode = this.get(idx);
+        let beforeNode = removedNode.prev;
+        let afterNode = removedNode.next;
 
         // update the next and prev properties to remove the found node from the list
+        beforeNode.next = afterNode;
+        afterNode.prev = beforeNode;
 
         // set the next and prev to null on the found node
+        removedNode.next = null;
+        removedNode.prev = null;
 
         // decrement the length
+        this.length--;
 
         // return the removed node
+        return removedNode;
     }
 }
 
@@ -141,7 +153,7 @@ let list = new DoublyLinkedList();
 list.push(1);
 list.push(2);
 list.push(3);
-list.push(5);
-console.log('before insert', list);
-console.log(list.insert(-9, 'inserted'));
-console.log('after insert', list);
+list.push(4);
+console.log('before remove', list);
+console.log('removed node', list.remove(5));
+console.log('after remove', list);
