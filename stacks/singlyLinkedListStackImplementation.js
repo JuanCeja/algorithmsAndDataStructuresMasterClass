@@ -31,9 +31,12 @@ class Stack {
             this.first = newNode;
 
             // set the next property on the node to be the previously created variable
-            newNode.next = tempFirst;
+            this.first.next = tempFirst;
         }
         // increment the size of the stack by 1
         this.size++;
+        return this.size;
+        // we can also do all that in 1 line
+        // return ++this.size;
     }
 }
