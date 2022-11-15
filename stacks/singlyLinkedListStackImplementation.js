@@ -68,4 +68,7 @@ let stack = new Stack();
 stack.push('first');
 stack.push('second');
 stack.push('third');
-console.log(stack);
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
+console.log(stack.pop());
