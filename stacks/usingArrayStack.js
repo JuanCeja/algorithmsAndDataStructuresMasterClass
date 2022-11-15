@@ -14,7 +14,7 @@ stack.pop();
 
 // ========================== we can also use UNSHIFT and SHIFT method using the array ================================
 // but we cant to stick to using POP and PUSH if were using an array in order to optimize and have better time complexity. when we use SHIFT and UNSHIFT
-// we have to re-index everything in our array. 
+// we have to re-index everything in our array.   
 
 let stack2 = [];
 stack.unshift('youtube.com');
