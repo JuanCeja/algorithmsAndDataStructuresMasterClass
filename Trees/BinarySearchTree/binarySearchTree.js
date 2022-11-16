@@ -1,6 +1,6 @@
 class Node {
-    constructor(value) {
-        this.value = value;
+    constructor(val) {
+        this.val = val;
         this.left = null;
         this.right = null;
     }
@@ -13,20 +13,40 @@ class BinarySearchTree {
 
     insert(val) {
         // create new node
+        let newNode = new Node(val);
 
         // starting at the root
         // check if there is a root, if not - the root now becomes that new node.
-        // if there is a root, check if the value of the new node is greater than or less than the value
-            // if it is greater
-            // check to see if there is a node to the right
-            // if there is, move to that node and repeat these steps
-            // if there is not, add that node as the right property
+        if(this.root === null) {
+            this.root = newNode;
+        } 
 
-            // if it is less than
-            // check to see if there is a node to the left
-                // if there is, move to that node and repeat these steps
+        // if there is a root, check if the value of the new node is greater than or less than the value
+        if(this.root) {
+            // if it is greater
+            if(newNode.val > this.root.val) {
+                // check to see if there is a node to the right
+                while(current.right) {
+                    // if there is, move to that node and repeat these steps
+                    current = current.right
+                }
+                // if there is not, add that node as the right property
+                if(!current.right) {
+                    current.right = newNode;
+                }
+            } else {
+                // check to see if there is a node to the left
+                while(current.left) {
+                    // if there is, move to that node and repeat these steps
+                    current = current.left
+                }
                 // if there is not, add that node as the left property
-            
+                if(!current.left) {
+                    current = current.left;
+                }
+            }
+        }
+        return this;
     }
 }
 
