@@ -2,6 +2,9 @@
 // in a STACK we add to the BEGINNING and remove from the BEGINNING
 // in a QUEUE we add to the END and remove from the BEGINNING
 
+// a STACK is a LIFO method. Last In First Out
+
+
 class Node {
     constructor(val) {
         this.val = val;
