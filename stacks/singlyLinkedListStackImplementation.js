@@ -1,4 +1,6 @@
 // we want to start of by creating our Stack class and Node class
+// in a STACK we add to the BEGINNING and remove from the BEGINNING
+// in a QUEUE we add to the END and remove from the BEGINNING
 
 class Node {
     constructor(val) {
