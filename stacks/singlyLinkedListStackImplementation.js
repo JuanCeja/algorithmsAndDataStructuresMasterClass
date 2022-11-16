@@ -70,9 +70,9 @@ class Stack {
 }
 
 let stack = new Stack();
-stack.push('first');
-stack.push('second');
-stack.push('third');
+console.log('first', stack.push('first'));
+console.log('second', stack.push('second'));
+console.log('third', stack.push('third'));
 console.log(stack.pop());
 console.log(stack.pop());
 console.log(stack.pop());

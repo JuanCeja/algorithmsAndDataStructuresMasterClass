@@ -36,6 +36,33 @@ class Queue {
     }
 
     dequeue() {
+        // if there is no first property, return null
+        if (!this.first) return null;
 
+        // store the first property in a variable
+        let temp = this.first;
+
+        // see if the first is the same as the last(check if there is only 1 node). If so, set the first and last to be null
+        if (this.first === this.last) {
+            this.last = null;
+        }
+
+        // otherwise, if there is more than 1 node, set the first property to be the next property of the first
+        this.first = this.first.next;
+
+        // decrement the size
+        this.size--;
+
+        // return the val of the node dequeued
+        return temp.val;
     }
 }
+
+let queue = new Queue();
+console.log('first', queue.enqueue('First'));
+console.log('second', queue.enqueue('Second'));
+console.log('third', queue.enqueue('Third'));
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
+console.log(queue.dequeue());
