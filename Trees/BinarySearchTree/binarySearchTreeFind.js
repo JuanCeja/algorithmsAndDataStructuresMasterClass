@@ -60,7 +60,7 @@ class BinarySearchTree {
             } else {
 
                 // else if our val is equals to our current.val return true
-                return true;
+                found = true;
             }
         }
         // if never found return false
@@ -76,4 +76,4 @@ tree.insert(19);
 tree.insert(15);
 tree.insert(5);
 tree.insert(3);
-console.log(tree.find(23));
+console.log(tree.find());
