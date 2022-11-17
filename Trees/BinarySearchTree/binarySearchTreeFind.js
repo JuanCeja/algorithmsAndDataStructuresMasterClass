@@ -37,7 +37,22 @@ class BinarySearchTree {
     }
 
     find(val) {
-        
+        // start at the root
+
+        // check if there is a root, if not were done return false
+
+        // if there is a root, check if the value of the new node is the value we are looking for
+        // if found were done
+
+        // if it is greater
+            // check to see if there is a node to the right
+                // if there is, move to that node and repeate these steps
+                // if there is not, were done searching
+
+        // if it is less
+            // check to see if there is a node to the left
+                // if there is, move to that node and repeat these steps
+                // if there is not, were done searching
     }
 }
 
