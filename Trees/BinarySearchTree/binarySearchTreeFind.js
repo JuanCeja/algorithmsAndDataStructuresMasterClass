@@ -37,50 +37,34 @@ class BinarySearchTree {
     }
 
     find(val) {
-        // start at the root
-        let current = this.root;
-
-        // check if there is a root, if not were done return false
+        // if the root does not exist return false
         if (this.root === null) return false;
 
-        while (true) {
+        // make our current variable and found
+        let current = this.root;
+        let found = false;
 
-            if (current.val === val) return true;
+        // while current still exists and found is false keep looping
+        while (current && !found) {
+            
+            // check to see if val is equals to, greater than, or less than our current.val
+            if (val < current.val) {
 
-            // if there is a root, check if the value of the new node is the value we are looking for
-            if (this.root.val === val) {
-                // if found were done
-                return true;
+                // if val is less than our current.val move left
+                current = current.left;
+
+            } else if (val > current.val) {
+
+                // if val is greater than our current.val move right
+                current = current.right;
             } else {
 
-                // if it is greater
-                if (val > current.val) {
-
-                    // check to see if there is a node to the right
-                    if (current.right) {
-
-                        // if there is, move to that node and repeat these steps
-                        current = current.right
-                    } else {
-
-                        // if there is not, were done searching
-                        return false
-                    }
-                } else {
-                    // if it is less
-                    // check to see if there is a node to the left
-                    if (current.left) {
-
-                        // if there is, move to that node and repeat these steps
-                        current = current.left;
-                    } else {
-                        // if there is not, were done searching
-                        return false;
-                    }
-
-                }
+                // else if our val is equals to our current.val return true
+                return true;
             }
         }
+        // if never found return false
+        return false;
     }
 }
 
