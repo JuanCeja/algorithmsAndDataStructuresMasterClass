@@ -46,7 +46,7 @@ class BinarySearchTree {
 
         // while current still exists and found is false keep looping
         while (current && !found) {
-            
+
             // check to see if val is equals to, greater than, or less than our current.val
             if (val < current.val) {
 

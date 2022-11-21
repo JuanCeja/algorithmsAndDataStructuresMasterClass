@@ -32,7 +32,7 @@ class BinarySearchTree {
 
             // if our val is less than our current.val we traverse to the left
             if (val < current.val) {
-                
+
                 // if there is no left that will be the spot for our newNode and return our tree
                 if (current.left === null) {
                     current.left = newNode;
@@ -42,8 +42,8 @@ class BinarySearchTree {
                 current = current.left
             } else {
                 // if our val is greater than our current.val we traverse to the right
-                
-                
+
+
                 // if there is no right that will be the spot for our newNode and return our tree
                 if (current.right === null) {
                     current.right = newNode;
