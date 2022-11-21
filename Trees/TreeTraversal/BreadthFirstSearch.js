@@ -72,27 +72,35 @@ class Tree {
 
     BreadthFirstSearch() {
         // create a queue (this can be an array) and a variable to store the values of nodes visited
+        let queue = [];
+        let data = [];
+        let node = this.root;
 
         // place the root node in the queue
+        queue.push(node);
 
         // loop as long as there is anything in the queue
-
+        while(queue.length) {
             // dequeue a node from the queue and push the value of the node into the variable that stores the nodes
-
+            node = queue.shift();
+            data.push(node.val);
+            
             // if there is a left property on the node dequeued - add it to the queue
-
+            if(node.left) queue.push(node.left)
+            
             // if there is a right property on the node dequeued - add it to the queue
-
+            if(node.right) queue.push(node.right)
+        }
         // return the variable that stores the values
+        return data;
     }
 }
 
 let tree = new Tree();
 tree.insert(10);
-tree.insert(17);
-tree.insert(4);
-tree.insert(19);
+tree.insert(6);
 tree.insert(15);
-tree.insert(5);
 tree.insert(3);
-console.log(tree.find());
+tree.insert(8);
+tree.insert(20);
+console.log(tree.BreadthFirstSearch());
