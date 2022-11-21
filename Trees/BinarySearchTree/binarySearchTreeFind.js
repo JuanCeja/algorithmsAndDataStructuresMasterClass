@@ -60,7 +60,7 @@ class BinarySearchTree {
             } else {
 
                 // else if our val is equals to our current.val return true
-                found = true;
+                return true;
             }
         }
         // if never found return false
