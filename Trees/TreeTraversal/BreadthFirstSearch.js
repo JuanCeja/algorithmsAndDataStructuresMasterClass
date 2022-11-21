@@ -1,3 +1,5 @@
+// ================== BREADTH FIRST SEARCH ========================
+
 // There are 2 ways of traversing a tree and they are: 
 // Breadth-first Search
 // Depth-first Search
@@ -68,7 +70,9 @@ class Tree {
         return false;
     }
 
-    
+    BreadthFirstSearch() {
+        
+    }
 }
 
 let tree = new Tree();
