@@ -85,20 +85,27 @@ class BinarySearchTree {
 
     DepthFirstPreOrder() {
         // create a variable to store the values of nodes visited
+        let data = [];
         
         // store the root of the BST in a variable called current
+        let current = this.root;
 
         // write a helper function(traverse) which accepts a node
-
+        function traverse(node) {
             // push the value of the node to the variables that stores the values
+            data.push(node.val)
 
             // if the node has a left property, call the helper function with the left property on the node
+            if(node.left) traverse(node.left);
 
             // if the node has a right property, call the helper function with the right property on the node
-
+            if(node.right) traverse(node.right);
+        }
         // invoke the helper function with the current variable
+        traverse(current);
 
         // return the array of values
+        return data;
     }
 }
 
@@ -109,5 +116,6 @@ tree.insert(15);
 tree.insert(3);
 tree.insert(8);
 tree.insert(20);
-tree.insert(14);
-console.log(tree.BreadthFirstSearch());
+console.log(tree.DepthFirstPreOrder());
+
+// output should be [10, 6, 3, 8, 15, 20]
