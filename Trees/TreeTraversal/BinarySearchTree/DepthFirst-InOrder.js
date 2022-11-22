@@ -1,19 +1,19 @@
-// ================== DEPTH FIRST **PRE ORDER** ========================
+// ================== DEPTH FIRST **POST ORDER** ========================
 
 // There are 2 ways of traversing a tree and they are:
 // Breadth-first Search
 // Depth-first Search (there are 3 different orders within depth first search)
 
-// DFS basically means that they pursue all nodes, they visit or traverse nodes vertically down the end of the tree before visiting sibling nodes. It means that we're going to traverse down until we hit the end of the tree at some point.
+// DFS basically means that they pursue all nodes, they visit or traverse nodes vertically down until the end of the tree before visiting sibling nodes. It means that we're going to traverse down until we hit the end of the tree at some point.
 // Were working DOWN first DEPTH first rather HORIZONTALLY BREADTH first.
 
-// In PRE ORDER we first visit the node, collect the data and then proceed to its children left first then right. Same thing with the children, we recursively do the same, collect the data from those nodes visited then proceed to its children.
+// IN ORDER: Were going to traverse the entire left side, THEN *visit* the node and THEN traverse the entire right side. 
 
 //        10
 //    6        15
 //  3   8          20
 
-// this will give us [10, 6, 3, 8, 15, 20]
+// this should output = [3, 6, 8, 10, 15, 20]
 
 class Node {
     constructor(val) {
@@ -71,14 +71,15 @@ class BinarySearchTree {
     }
 
     BreadthFirstSearch() {
-        let queue = [];
         let data = [];
+        let queue = [];
         let node = this.root;
 
+        if (!this.root) return undefined;
         queue.push(node);
         while (queue.length) {
             node = queue.shift();
-            data.push(node.val);
+            data.push(node.val)
             if (node.left) queue.push(node.left);
             if (node.right) queue.push(node.right);
         }
@@ -86,30 +87,52 @@ class BinarySearchTree {
     }
 
     DepthFirstPreOrder() {
-        // create a variable to store the values of nodes visited
-        let data = [];
-        
-        // store the root of the BST in a variable called current
         let current = this.root;
+        let data = [];
 
-        // write a helper function(traverse) which accepts a node
+        if (!this.root) return undefined;
         function traverse(node) {
-            // push the value of the node to the variables that stores the values
-            data.push(node.val)
-
-            // if the node has a left property, call the helper function with the left property on the node
-            if(node.left) traverse(node.left);
-
-            // if the node has a right property, call the helper function with the right property on the node
-            if(node.right) traverse(node.right);
-        }
-        // invoke the helper function with the current variable
+            data.push(node.val);
+            if (node.left) traverse(node.left);
+            if (node.right) traverse(node.right);
+        };
         traverse(current);
-
-        // return the array of values
         return data;
     }
-}
+
+    DepthFirstPostOrder() {
+        let data = [];
+        let current = this.root;
+
+        if(!this.root) return undefined;
+        function traverse(node) {
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            data.push(node.val);
+        }
+        traverse(current);
+        return data;
+    }
+
+    DepthFirstInOrder() {
+        // create a variable to store the values of nodes visited
+
+        // store the root of the BST in a variable called current
+
+        // write a helper function which accepts a node
+
+            // if the node has a left property, call the helper function with the left property on the node
+
+            // push the values of the node to the variable that stores the values
+
+            // if the node has a right property, call the helper function with the right property on the node
+
+        // invoke the helper function with the current variable
+
+        // return our data
+    }
+
+};
 
 let tree = new BinarySearchTree();
 tree.insert(10);
@@ -118,7 +141,11 @@ tree.insert(15);
 tree.insert(3);
 tree.insert(8);
 tree.insert(20);
-console.log(tree.BreadthFirstSearch());
-console.log(tree.DepthFirstPreOrder());
+console.log('BFS', tree.BreadthFirstSearch());
+console.log('DFS-PreOrder', tree.DepthFirstPreOrder());
+console.log('DFS-PostOrder', tree.DepthFirstPostOrder());
+console.log('DFS-InOrder', tree.DepthFirstInOrder());
 
-// output should be [10, 6, 3, 8, 15, 20]
+// BFS = [10, 6, 15, 3, 8, 20]
+// DFS Pre Order output = [10, 6, 3, 8, 15, 20]
+// DFS Post Order output = [3, 8, 6, 20, 15, 10]
