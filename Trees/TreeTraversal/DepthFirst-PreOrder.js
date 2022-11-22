@@ -1,20 +1,17 @@
-// ================== BREADTH FIRST SEARCH ========================
+// ================== DEPTH FIRST **PRE ORDER** ========================
 
-// There are 2 ways of traversing a tree and they are: 
+// There are 2 ways of traversing a tree and they are:
 // Breadth-first Search
 // Depth-first Search (there are 3 different orders within depth first search)
 
-// BFS just means we want to visit every node on the same level, every sibling node before we look at a child.
+// DFS basically means that they pursue all nodes, they visit or traverse nodes vertically down the end of the tree before visiting sibling nodes. It means that we're going to traverse down until we hit the end of the tree at some point.
+// Were working DOWN first DEPTH first rather HORIZONTALLY BREADTH first.
 
 //        10
 //    6        15
 //  3   8          20
 
-//        ---> 10
-//    ---> 6 --->  15  --->
-//  ---> 3   8 --->  20  ---->
-
-// In BFS this would look like [10, 6, 15, 3, 8, 20]
+// this will give us [10, 6, 3, 8, 15, 20]
 
 class Node {
     constructor(val) {
@@ -39,13 +36,13 @@ class BinarySearchTree {
         while (true) {
             if (val === current.val) return undefined;
             if (val < current.val) {
-                if (current.left === null) {
+                if (!current.left) {
                     current.left = newNode;
                     return this;
                 }
-                current = current.left
+                current = current.left;
             } else {
-                if (current.right === null) {
+                if (!current.right) {
                     current.right = newNode;
                     return this;
                 }
@@ -61,7 +58,8 @@ class BinarySearchTree {
         while (current && !found) {
             if (val < current.val) {
                 current = current.left;
-            } else if (val > current.val) {
+            }
+            else if (val > current.val) {
                 current = current.right;
             } else {
                 return true;
@@ -71,28 +69,22 @@ class BinarySearchTree {
     }
 
     BreadthFirstSearch() {
-        // create a queue (this can be an array) and a variable to store the values of nodes visited
         let queue = [];
         let data = [];
         let node = this.root;
 
-        // place the root node in the queue
         queue.push(node);
-
-        // loop as long as there is anything in the queue
-        while(queue.length) {
-            // dequeue a node from the queue and push the value of the node into the variable that stores the nodes
+        while (queue.length) {
             node = queue.shift();
             data.push(node.val);
-            
-            // if there is a left property on the node dequeued - add it to the queue
-            if(node.left) queue.push(node.left)
-            
-            // if there is a right property on the node dequeued - add it to the queue
-            if(node.right) queue.push(node.right)
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
         }
-        // return the variable that stores the values
         return data;
+    }
+
+    DepthFirstPreOrder() {
+        
     }
 }
 
@@ -103,4 +95,5 @@ tree.insert(15);
 tree.insert(3);
 tree.insert(8);
 tree.insert(20);
+tree.insert(14);
 console.log(tree.BreadthFirstSearch());
