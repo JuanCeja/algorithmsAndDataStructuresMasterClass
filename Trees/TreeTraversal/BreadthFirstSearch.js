@@ -104,3 +104,8 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 console.log(tree.BreadthFirstSearch());
+
+// BFS = [10, 6, 15, 3, 8, 20]
+// DFS Pre Order output = [10, 6, 3, 8, 15, 20]
+// DFS Post Order output = [3, 8, 6, 20, 15, 10]
+// DFS In Order output = [3, 6, 8, 10, 15, 20]
