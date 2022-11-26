@@ -11,7 +11,7 @@ function mostPoeticalWord(poem) {
     let words = poem.split(' ');
     // [ 'like', 'feeble', 'age' ]
 
-    poeticScore = [];
+    let poeticScore = [];
     
     for(let i = 0; i < words.length; i++){
         let count = 0;
@@ -27,8 +27,12 @@ function mostPoeticalWord(poem) {
         }
         poeticScore.push(count);
     }
-
-    return poeticScore;
+    let maxScore = Math.max(...poeticScore);
+    console.log(poeticScore);
+    
+    for(let i = 0; i < poeticScore.length; i++) {
+        if(maxScore === poeticScore[i]) return words[i];
+    }
 }
 
-console.log(mostPoeticalWord('like feeble age'));
+console.log(mostPoeticalWord('like feeble age he reeleth from the day'));
