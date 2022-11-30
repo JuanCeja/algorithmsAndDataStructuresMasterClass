@@ -75,4 +75,5 @@ heap.insert(27);
 heap.insert(12);
 console.log(heap.insert(55));
 console.log(heap.extractMax());
+console.log(heap.extractMax());
 console.log(heap.values);
