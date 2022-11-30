@@ -33,3 +33,11 @@
 // In a MIN-BINARY-HEAP the parent is less than the children, but there are no guarantees between sibling nodes.
 
 // A binary-heap is as compact as possible. All the children of each node are as full as they can be and left children are filled out first, meaning every left and right is filled before moving down. Left children are always filled out first.
+
+=============================================== RECAP ===================================================
+
+// Binary heaps are very useful data structures for sorting, and implementing other data structures like PRIORITY QUEUES
+
+// Binary heaps are either MAX-BINARY-HEAPS or MIN-BINARY-HEAPS with parents either being smaller or larger than their children 
+
+// with just a little bit of math, we can represent heaps using arrays
