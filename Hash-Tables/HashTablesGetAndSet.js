@@ -18,4 +18,20 @@ class HashTable {
         // return our hash value
         return total;
     }
+
+    set(key, value) {
+        // accepts a key and a value
+
+        // hash the key
+
+        // stores the key-value pair in the hash table array via separate chaining
+    };
+
+    get(key) {
+        // accepts a key
+
+        // hashes the key
+
+        // retrieves the key-value pair in the hash table
+    };
 }
