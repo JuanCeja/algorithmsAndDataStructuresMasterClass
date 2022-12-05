@@ -21,17 +21,31 @@ class HashTable {
 
     set(key, value) {
         // accepts a key and a value
-
         // hash the key
+        let index = this._hash(key);
 
-        // stores the key-value pair in the hash table array via separate chaining
+        // STORE THE KEY-VALUE PAIR IN THE HASH TABLE ARRAY VIA SEPARATE CHAINING
+        // if there is nothing(unoccupied) at the index SET it to an empty array
+        if(!this.keyMap[index]) {
+            this.keyMap[index] = [];
+        }
+        // otherwise, we just push the key-value pair into the parent array of that index
+        this.keyMap[index].push([key, value]);
     };
 
     get(key) {
         // accepts a key
-
         // hashes the key
 
         // retrieves the key-value pair in the hash table
     };
 }
+
+let ht = new HashTable();
+ht.set('hello world','goodbye');
+ht.set('dogs','are cool');
+ht.set('cats','are fine');
+ht.set('i love','pizza');
+ht.set('hi', 'bye');
+ht.set('french', 'fries');
+console.log(ht);
