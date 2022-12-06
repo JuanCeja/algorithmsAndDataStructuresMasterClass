@@ -26,7 +26,7 @@ class HashTable {
 
         // STORE THE KEY-VALUE PAIR IN THE HASH TABLE ARRAY VIA SEPARATE CHAINING
         // if there is nothing(unoccupied) at the index SET it to an empty array
-        if(!this.keyMap[index]) {
+        if (!this.keyMap[index]) {
             this.keyMap[index] = [];
         }
         // otherwise, we just push the key-value pair into the parent array of that index
@@ -39,10 +39,10 @@ class HashTable {
         let index = this._hash(key);
 
         // retrieve the key-value pair in the hash table
-        if(this.keyMap[index]) {
+        if (this.keyMap[index]) {
             // if something is found at that index we loop through the child array until we find a match for our key
-            for(let i = 0; i < this.keyMap[index].length; i++) {
-                if(this.keyMap[index][i][0] === key) {
+            for (let i = 0; i < this.keyMap[index].length; i++) {
+                if (this.keyMap[index][i][0] === key) {
                     return this.keyMap[index][i][1];
                 }
             }
@@ -51,22 +51,36 @@ class HashTable {
         return undefined;
     };
 
-    keys(){
-
+    values() {
+        
+        let valuesArr = [];
+        for (let i = 0; i < this.keyMap.length; i++) {
+            if (this.keyMap[i]) {
+                for (let j = 0; j < this.keyMap[i].length; j++) {
+                    if (!valuesArr.includes(this.keyMap[i][j][1])) {
+                        valuesArr.push(this.keyMap[i][j][1]);
+                    }
+                }
+            }
+        }
+        return valuesArr;
     };
 
-    values() {
+    keys() {
 
     };
 }
 
 let ht = new HashTable(17);
-ht.set('maroon','#800000');
-ht.set('yellow','#FFFF00');
-ht.set('olive','#808000');
-ht.set('salmon','#FA8072');
+ht.set('maroon', '#800000');
+ht.set('yellow', '#FFFF00');
+ht.set('olive', '#808000');
+ht.set('salmon', '#FA8072');
 ht.set('lightcoral', '#F08080');
 ht.set('mediumvioletred', '#C71585');
 ht.set('plum', '#DDA0DD');
+ht.set('plum', '#DDA0DD');
+ht.set('plum', '#DDA0DD');
 ht.set('are we done', 'yes');
 console.log(ht.get('are we done'));
+console.log(ht.values());
