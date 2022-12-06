@@ -71,13 +71,23 @@ class HashTable {
                 }
             }
         }
-        
+
         // we return our values arr
         return valuesArr;
     };
 
     keys() {
-
+        let keysArr = [];
+        for(let i = 0; i < this.keyMap.length; i++) {
+            if(this.keyMap[i]) {
+                for(let j = 0; j < this.keyMap[i].length; j++) {
+                    if(!keysArr.includes(this.keyMap[i][j][0])) {
+                        keysArr.push(this.keyMap[i][j][0]);
+                    }
+                }   
+            }
+        }
+        return keysArr;
     };
 }
 
@@ -94,3 +104,4 @@ ht.set('plum', '#DDA0DD');
 ht.set('are we done', 'yes');
 console.log(ht.get('are we done'));
 console.log(ht.values());
+console.log(ht.keys());
