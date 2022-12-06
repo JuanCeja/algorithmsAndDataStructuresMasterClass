@@ -50,6 +50,14 @@ class HashTable {
         // return undefined if nothing is at that index OR if our key isn't found in that index
         return undefined;
     };
+
+    keys(){
+
+    };
+
+    values() {
+
+    };
 }
 
 let ht = new HashTable(17);
