@@ -1,5 +1,5 @@
 class HashTable {
-    // if size isn't provided we use default size of 53 which is a PRIME NUMBER
+    // if size isn't provided we use default size of 53 which is a PRIME NUMBER. PRIME NUMBERS limit the amount of collisions we have
     constructor(size = 53) {
         this.keyMap = new Array(size);
     }
@@ -35,17 +35,30 @@ class HashTable {
 
     get(key) {
         // accepts a key
-        // hashes the key
+        // hash the key
+        let index = this._hash(key);
 
-        // retrieves the key-value pair in the hash table
+        // retrieve the key-value pair in the hash table
+        if(this.keyMap[index]) {
+            // if something is found at that index we loop through the child array until we find a match for our key
+            for(let i = 0; i < this.keyMap[index].length; i++) {
+                if(this.keyMap[index][i][0] === key) {
+                    return this.keyMap[index][i][1];
+                }
+            }
+        }
+        // return undefined if nothing is at that index OR if our key isn't found in that index
+        return undefined;
     };
 }
 
-let ht = new HashTable();
-ht.set('hello world','goodbye');
-ht.set('dogs','are cool');
-ht.set('cats','are fine');
-ht.set('i love','pizza');
-ht.set('hi', 'bye');
-ht.set('french', 'fries');
-console.log(ht);
+let ht = new HashTable(17);
+ht.set('maroon','#800000');
+ht.set('yellow','#FFFF00');
+ht.set('olive','#808000');
+ht.set('salmon','#FA8072');
+ht.set('lightcoral', '#F08080');
+ht.set('mediumvioletred', '#C71585');
+ht.set('plum', '#DDA0DD');
+ht.set('are we done', 'yes');
+console.log(ht.get('are we done'));
