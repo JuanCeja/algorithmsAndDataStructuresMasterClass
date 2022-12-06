@@ -52,17 +52,27 @@ class HashTable {
     };
 
     values() {
-        
+        // create arr to return all our values
         let valuesArr = [];
+
+        // loop through our parent array
         for (let i = 0; i < this.keyMap.length; i++) {
+
+            // if something exists at the index of the array also loop through the child array
             if (this.keyMap[i]) {
+
+                // loop through our child array
                 for (let j = 0; j < this.keyMap[i].length; j++) {
+
+                    // if our value does not exist in our values array, then we push it to our values arr
                     if (!valuesArr.includes(this.keyMap[i][j][1])) {
                         valuesArr.push(this.keyMap[i][j][1]);
                     }
                 }
             }
         }
+        
+        // we return our values arr
         return valuesArr;
     };
 
