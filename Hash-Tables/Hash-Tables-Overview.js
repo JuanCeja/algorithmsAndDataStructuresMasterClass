@@ -21,8 +21,27 @@
 
 // In separate chaining we can more data than the length of our table. It allows us to have more data.
 
+
 // ============================================= LINEAR PROBING =============================================
 
 // With Linear Probing, when we find a collision, we search through the array to find the next empty slot. Unlike with separate chaining, this allows us to store a single key-value pair at each index.
 
 // In linear probing we can only store data at the length of the table unlike separate chaining.
+
+
+// ======================================== HASH TABLES BIG O NOTATION ========================================
+
+// On average case 
+// Insert: O(1);
+// Deletion: O(1);
+// Access: O(1);
+
+
+// ====================================== HASH TABLES IN THE WILD =======================================
+
+// Hash tables are collections of key-values pairs
+// Hast tables can find values quickly given a key
+// Hast tables can add new key-values quickly
+// Hast tables store data in a large array, and work by hashing the keys
+// A good hash should be fast, distribute keys uniformly, and be deterministic
+// Separate chaining and linear probing are 2 strategies used to deal with 2 keys that hash to the same index
