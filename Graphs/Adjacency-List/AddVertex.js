@@ -4,9 +4,11 @@ class Graph {
         this.adjacencyList = {}
     };
 
-    addVertex(val) {
+    addVertex(vertex) {
         // it should add a key to the adjacency list with the name of the vertex and set its value to be an empty array
-        this.adjacencyList[val] = [];
+        if(!this.adjacencyList[vertex]){
+            this.adjacencyList[vertex] = [];
+        }
     };
 };
 
