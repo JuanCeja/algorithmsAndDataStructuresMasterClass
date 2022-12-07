@@ -35,12 +35,25 @@
 
 // ======================================================= WAYS TO STORE GRAPHS =======================================================
 
-// ADJACENCY MATRIX    -    A matrix is just a 2 dimensional structure, usually implemented with nested arrays, but not always. 
+// ADJACENCY MATRIX    -    A matrix is just a 2 dimensional structure(looks like rows and columns), usually implemented with nested arrays, but not always. 
 //                          Basically we store information in rows and columns so we could represent the connections were using.
 
 // ADJACENCY LIST      -    In a Adjacency List we use an array or list to store the edges. So if we wanted to figure out what edges, 
 //                          what connections there were between node3 and it's other nodes, we would go to the index of node3 in our 
 //                          array and in that index theres a list(array) there that contains the connections. Also, if our nodes are not 
-//                          numeric and let's say they are strings. Well, we could use a hash table, use a key value pair of data 
+//                          numeric and let's say they are strings. Well, we could use a hash table, use a key-value pair of data 
 //                          structure. We store a given key and attach a list(array) as a value with the connections stored in the 
 //                          array. 
+
+
+
+// ==================================================== ADJACENCY MATRIX VS LIST BIG O ====================================================
+
+//                         ===== ADJACENCY LIST =====                                        ===== ADJACENCY MATRIX ===== 
+                // GOOD - * Can take up less space (in sparse graphs)                 GOOD - * Faster to look up specific edge
+                        // * Faster to iterate all edges                                      
+
+
+                // BAD -  * Can be slower to lookup specific edge                      BAD -  * Takes up more space(in sparse graphs)
+                //                                                                             * Slower to iterate all edges
+
