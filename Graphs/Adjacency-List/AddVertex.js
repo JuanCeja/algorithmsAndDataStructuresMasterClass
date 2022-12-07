@@ -12,3 +12,7 @@ class Graph {
     };
 };
 
+let g = new Graph();
+g.addVertex('Tokyo');
+g.addVertex('San Francisco');
+console.log(g);
