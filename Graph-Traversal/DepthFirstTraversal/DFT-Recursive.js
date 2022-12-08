@@ -25,38 +25,58 @@ class Graph {
         delete this.adjacencyList[vertex];
     };
 
-    DFSRecursive(vertex) {
+    depthFirstRecursive(start) {
         // the function receives a starting node
-
         // create a list to store the end result, to be returned at the very end
-
         // create an object to store visited vertices
+        const resultsArray = [];
+        const visitedVertices = {};
+        const adjacencyList = this.adjacencyList;
 
         // create a helper function which accepts a vertex
-
+        (function dfs (vertex) {
             // the helper function should return early if the vertex is empty
+            if(!vertex) return null;
 
             // the helper function should place the vertex it accepts into the visited object and push that vertex into the result array
+            visitedVertices[vertex] = true;
+            resultsArray.push(vertex);
 
             // loop over all of the values in the adjacencyList for that vertex
+            adjacencyList[vertex].forEach(neighbor => {
+                if(!visitedVertices[neighbor]) return dfs(neighbor);
+            });
 
-            // if any of those values have not been visited, recursively invoke the helper function with that vertex
+        })(start);
+        // invoke the helper function with the starting vertex 
+
+        // return the result array
+        return resultsArray;
     };
 };
 
 let g = new Graph();
-g.addVertex('Dallas');
-g.addVertex('Tokyo');
-g.addVertex('Aspen');
-g.addVertex('Los Angeles');
-g.addVertex('Hong Kong');
-g.addEdge('Dallas', 'Tokyo');
-g.addEdge('Dallas', 'Aspen');
-g.addEdge('Hong Kong', 'Tokyo');
-g.addEdge('Hong Kong', 'Dallas');
-g.addEdge('Los Angeles', 'Hong Kong');
-g.addEdge('Los Angeles', 'Aspen');
-console.log(g);
-g.removeVertex('Hong Kong');
-g.removeVertex('Aspen');
-console.log(g);
+g.addVertex('A');
+g.addVertex('B');
+g.addVertex('C');
+g.addVertex('D');
+g.addVertex('E');
+g.addVertex('F');
+g.addEdge('A', 'B');
+g.addEdge('A', 'C');
+g.addEdge('B', 'D');
+g.addEdge('C', 'E');
+g.addEdge('D', 'E');
+g.addEdge('D', 'F');
+g.addEdge('E', 'F');
+
+//                          A
+//                      /       \
+//                     B         C
+//                      \       /
+//                       D --- E
+//                        \   /
+//                          F
+
+
+console.log(g.depthFirstRecursive('A'));
