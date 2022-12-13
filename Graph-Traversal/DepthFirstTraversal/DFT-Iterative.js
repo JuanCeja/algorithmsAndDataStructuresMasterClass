@@ -67,6 +67,7 @@ class Graph {
             // add it to the result list
             results.push(currentVertex);
 
+            // loop through its neighbors, if they have not been visited mark them as visited and add them to the stack
             this.adjacencyList[currentVertex].forEach(neighbor => {
                 if (!visitedVertices[neighbor]) {
                     visitedVertices[neighbor] = true;
