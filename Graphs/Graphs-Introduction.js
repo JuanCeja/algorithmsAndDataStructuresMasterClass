@@ -57,3 +57,14 @@
                 // BAD -  * Can be slower to lookup specific edge                      BAD -  * Takes up more space(in sparse graphs)
                 //                                                                             * Slower to iterate all edges
 
+
+
+
+
+//                          A
+//                      /       \
+//                     B         C
+//                      \       /
+//                       D --- E
+//                        \   /
+//                          F
