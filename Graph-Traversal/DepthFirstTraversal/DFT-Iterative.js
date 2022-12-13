@@ -44,8 +44,29 @@ class Graph {
         return results;
     };
 
+    // the function should accept a starting node
     depthFirstIterative(start) {
+        // create a stack to help us keep track of vertices
 
+        // create a list to store the end result, to be returned at the very end
+
+        // create an object to store visited vertices
+
+        // add the starting vertex to the stack, and mark it visited
+
+        // while the stack has something in it:
+
+            // pop the next vertex from the stack
+
+            // if that vertex hasn't been visited yet:
+
+                // mark it as visited
+
+                // add it to the result list
+
+                // push all of its neighbors into the stack
+
+        // return the result array
     };
 };
 
