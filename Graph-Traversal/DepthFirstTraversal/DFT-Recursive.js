@@ -25,11 +25,11 @@ class Graph {
         delete this.adjacencyList[vertex];
     };
 
+    // the function receives a starting node
     depthFirstRecursive(start) {
         // return early if the vertex is empty
         if (!this.adjacencyList[start]) return null;
 
-        // the function receives a starting node
         // create a list to store the end result, to be returned at the very end
         // create an object to store visited vertices
         const resultsArray = [];
@@ -38,6 +38,8 @@ class Graph {
 
         // create a helper function which accepts a vertex
         (function dfs (vertex) {
+            if(!vertex) return null;
+
             // the helper function should place the vertex it accepts into the visited object and push that vertex into the result array
             visitedVertices[vertex] = true;
             resultsArray.push(vertex);
