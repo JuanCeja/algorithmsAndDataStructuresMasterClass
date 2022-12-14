@@ -69,24 +69,36 @@ class Graph {
         return results;
     };
 
-    breadthFirstSearch (start) {
+    breadthFirstSearch(start) {
         // create a queue(im going to use an array) and place the starting vertex in it
-
         // create an array to store the nodes visited
-
         // create an object to store the nodes visited
+        let queue = [start];
+        let results = [];
+        let visited = {};
+        let currentVertex;
 
         // mark the starting vertex as visited
+        visited[start] = true;
 
         // loop as long as there is anything in the queue
+        while (queue.length) {
 
-        // remove the first vertex from the queue and push it into the array that stores nodes visited
+            // remove the first vertex from the queue and push it into the array that stores nodes visited
+            currentVertex = queue.shift();
+            results.push(currentVertex);
 
-        // loop over each vertex in teh adjacency list for the vertex you are visiting
-
-        // if it is not inside the object that stores nodes visited, mark it as visited and enqueue that vertex
-
+            // loop over each vertex in the adjacency list for the vertex you are visiting
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                // if it is not inside the object that stores nodes visited, mark it as visited and enqueue that vertex
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            })
+        }
         // once you have finished looping, return the array of visited nodes
+        return results;
     };
 }
 
@@ -114,4 +126,4 @@ g.addEdge('E', 'F');
 //                          F
 
 
-console.log(g.depthFirstIterative('A'));
+console.log(g.breadthFirstSearch('A'));
