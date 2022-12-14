@@ -34,10 +34,10 @@
 
 // A binary-heap is as compact as possible. All the children of each node are as full as they can be and left children are filled out first, meaning every left and right is filled before moving down. Left children are always filled out first.
 
-=============================================== RECAP ===================================================
+// =============================================== RECAP ===================================================
 
 // Binary heaps are very useful data structures for sorting, and implementing other data structures like PRIORITY QUEUES
 
 // Binary heaps are either MAX-BINARY-HEAPS or MIN-BINARY-HEAPS with parents either being smaller or larger than their children 
 
-// with just a little bit of math, we can represent heaps using arrays
+WITH JUST A LITTLE BIT OF MATH, WE CAN REPRESENT HEAPS USING ARRAYS
