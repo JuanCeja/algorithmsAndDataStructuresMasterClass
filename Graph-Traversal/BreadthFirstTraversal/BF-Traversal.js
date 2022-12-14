@@ -70,7 +70,7 @@ class Graph {
     };
 
     breadthFirstSearch (start) {
-
+        
     };
 }
 
