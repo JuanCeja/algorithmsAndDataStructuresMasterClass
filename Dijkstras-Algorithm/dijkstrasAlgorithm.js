@@ -1,21 +1,3 @@
-// ========================================================================== SIMPLE WEIGHTED GRAPH ==========================================================================
-
-// before we can actually find the shortest path in a graph between 2 points, we need to assign values between those points so we can find any path short or long. Make our graph a WEIGHTED GRAPH.
-
-class WeightedGraph {
-    constructor() {
-        this.adjacencyList = {};
-    };
-
-    addVertex(vertex) {
-        if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-    };
-
-    addEdge(vertex1, vertex2, weight) {
-        this.adjacencyList[vertex1].push({ node: vertex2, weight });
-        this.adjacencyList[vertex2].push({ node: vertex1, weight });
-    };
-};
 
 // =============================================================================== THE APPROACH ===============================================================================
 
@@ -37,7 +19,7 @@ class PriorityQueue {
     };
 
     enqueue(val, priority) {
-        this.values.push({val, priority});
+        this.values.push({ val, priority });
         this.sort();
     };
 
@@ -48,52 +30,100 @@ class PriorityQueue {
     sort() {
         this.values.sort((a, b) => a.priority - b.priority);
     };
-}
+};
 
-// =============================================================================== IMPLEMENTATION ===============================================================================
+// ========================================================================== SIMPLE WEIGHTED GRAPH ==========================================================================
 
-// this function should accept a starting and ending vertex
+// before we can actually find the shortest path in a graph between 2 points, we need to assign values between those points so we can find any path short or long. Make our graph a WEIGHTED GRAPH.
 
-// create an object(well call it distances) and set each key to be every vertex in the adjacency list with a value of infinity, except for the starting vertex which should have a value of 0
+class WeightedGraph {
+    constructor() {
+        this.adjacencyList = {};
+    };
 
-// after setting a value in the distances object, add each vertex with a priority of infinity to the priority queue, except the starting vertex, which should have a priority of 0 because thats were we begin
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    };
 
-// create another object called previous and set each key to be every vertex in the adjacency list with a value of null
+    addEdge(vertex1, vertex2, weight) {
+        this.adjacencyList[vertex1].push({ node: vertex2, weight });
+        this.adjacencyList[vertex2].push({ node: vertex1, weight });
+    };
 
-// start looping as long as there is anything in the priority queue
+    // this function should accept a starting and ending vertex
+    dijkstrasAlgorithm(start, finish) {
+        const nodes = new PriorityQueue();
+        const distances = {};
+        const previous = {};
+        let smallest;
 
-    // dequeue a vertex from the priority queue
+                                    // ===== BUILD UP INITIAL STATE =====
 
-    // if that vertex is the same as the ending vertex - we are done!
+        // create an object(well call it distances) and set each key to be every vertex in the adjacency list with a value of infinity, except for the starting vertex which should have a value of 0
+        // after setting a value in the distances object, add each vertex with a priority of infinity to the priority queue, except the starting vertex, which should have a priority of 0 because thats were we begin
+        // create another object called previous and set each key to be every vertex in the adjacency list with a value of null
+        for (let vertex in this.adjacencyList) {
+            if(vertex === start) {
+                distances[vertex] = 0;
+                nodes.enqueue(vertex, 0);
+            }
+            else {
+                distances[vertex] = Infinity;
+                nodes.enqueue(vertex, Infinity);
+            }
+            previous[vertex] = null;
+        };
 
-    // otherwise loop through each value in the adjacency list at the vertex
+        // start looping as long as there is anything in the priority queue
+        while(nodes.values.length) {
+
+            // dequeue a vertex from the priority queue
+            smallest = nodes.dequeue().val;
+            
+            // if that vertex is the same as the ending vertex - we are !!!DONE!!!
+            if(smallest === finish) {
+
+            };
+
+            // ====== ELSE BUILD UP PATH TO RETURN AT THE END =====
+            
+            
+            if(smallest || distances[smallest] !== Infinity) {
+                for( let neighbor in this.adjacencyList[smallest]) {
+                    let nextNode = this.adjacencyList[smallest][neighbor];
+                    let candidate = distances[smallest] + nextNode.weight;
+                };
+            };
+        };
 
         // calculate the distance to that vertex from the starting vertex
 
         // if the distance is less than what is currently stored in our distances object
 
-            // update the distances object with nex lower distance
+        // update the distances object with next lower distance
 
-            // update the previous object to contain that vertex
+        // update the previous object to contain that vertex
 
-            // enqueue the vertex with the total distance from the start node
+        // enqueue the vertex with the total distance from the start node
 
-            
+    };
+};
 
-// let q = new PriorityQueue;
-// q.enqueue('B', 3);
-// q.enqueue('C', 5);
-// q.enqueue('D', 2);
-// q.enqueue('Q', 20);
-// q.enqueue('p', 1);
-// console.log(q.values);
-// console.log(q.dequeue());
+let graph = new WeightedGraph();
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+graph.addVertex('E');
+graph.addVertex('F');
 
-// let graph = new WeightedGraph();
-// graph.addVertex('A');
-// graph.addVertex('B');
-// graph.addVertex('C');
-// graph.addEdge('A', 'B', 9);
-// graph.addEdge('A', 'C', 5);
-// graph.addEdge('B', 'C', 7);
-// console.log(graph);
+graph.addEdge('A', 'B', 4);
+graph.addEdge('A', 'C', 2);
+graph.addEdge('B', 'E', 3);
+graph.addEdge('C', 'D', 2);
+graph.addEdge('C', 'F', 4);
+graph.addEdge('D', 'E', 3);
+graph.addEdge('D', 'F', 1);
+graph.addEdge('E', 'F', 1);
+
+graph.dijkstrasAlgorithm('A', 'E');
