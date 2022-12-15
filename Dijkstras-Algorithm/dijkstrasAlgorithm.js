@@ -51,19 +51,22 @@ class WeightedGraph {
     };
 
     // this function should accept a starting and ending vertex
-    dijkstrasAlgorithm(start, finish) {
+    Dijkstra(start, finish) {
         const nodes = new PriorityQueue();
         const distances = {};
         const previous = {};
         let smallest;
 
-                                    // ===== BUILD UP INITIAL STATE =====
+        // this is the path we return at the end
+        let path = []; 
+
+        // ===== BUILD UP INITIAL STATE =====
 
         // create an object(well call it distances) and set each key to be every vertex in the adjacency list with a value of infinity, except for the starting vertex which should have a value of 0
         // after setting a value in the distances object, add each vertex with a priority of infinity to the priority queue, except the starting vertex, which should have a priority of 0 because thats were we begin
         // create another object called previous and set each key to be every vertex in the adjacency list with a value of null
         for (let vertex in this.adjacencyList) {
-            if(vertex === start) {
+            if (vertex === start) {
                 distances[vertex] = 0;
                 nodes.enqueue(vertex, 0);
             }
@@ -74,38 +77,42 @@ class WeightedGraph {
             previous[vertex] = null;
         };
 
-        // start looping as long as there is anything in the priority queue
-        while(nodes.values.length) {
+        // as long as there is something to visit
+        while (nodes.values.length) {
 
             // dequeue a vertex from the priority queue
             smallest = nodes.dequeue().val;
-            
-            // if that vertex is the same as the ending vertex - we are !!!DONE!!!
-            if(smallest === finish) {
 
+            // if that vertex is the same as the ending vertex - we are !!!DONE!!!
+            if (smallest === finish) {
+                while(previous[smallest]) {
+                    path.push(smallest);
+                    smallest = previous[smallest];
+                };
+                break;
             };
 
-            // ====== ELSE BUILD UP PATH TO RETURN AT THE END =====
-            
-            
-            if(smallest || distances[smallest] !== Infinity) {
-                for( let neighbor in this.adjacencyList[smallest]) {
+            // ====== NOW BUILD UP PATH TO RETURN AT THE END =====
+
+            if (smallest || distances[smallest] !== Infinity) {
+                for (let neighbor in this.adjacencyList[smallest]) {
+                    // find neighboring nodes
                     let nextNode = this.adjacencyList[smallest][neighbor];
+                    // calculate new distance to neighboring node
                     let candidate = distances[smallest] + nextNode.weight;
+                    let nextNeighbor = nextNode.node;
+                    if(candidate < distances[nextNeighbor])  {
+                        // this is just updating new smallest distance to neighbor
+                        distances[nextNeighbor] = candidate;
+                        // this is updating previous - how we got to neighbor
+                        previous[nextNeighbor] = smallest;
+                        // enqueue in priority queue with new priority
+                        nodes.enqueue(nextNeighbor, candidate);
+                    };
                 };
             };
         };
-
-        // calculate the distance to that vertex from the starting vertex
-
-        // if the distance is less than what is currently stored in our distances object
-
-        // update the distances object with next lower distance
-
-        // update the previous object to contain that vertex
-
-        // enqueue the vertex with the total distance from the start node
-
+        return path.concat(smallest).reverse();
     };
 };
 
@@ -126,4 +133,4 @@ graph.addEdge('D', 'E', 3);
 graph.addEdge('D', 'F', 1);
 graph.addEdge('E', 'F', 1);
 
-graph.dijkstrasAlgorithm('A', 'E');
+console.log(graph.Dijkstra('A', 'E'));
