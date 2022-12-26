@@ -11,7 +11,7 @@
 
 // ====================================================================== PRIORITY QUEUE USING BINARY HEAP =====================================================================
 
-// This priority queue will give us the next node to visit and all that it does it's just an array, and every time you add something to it, you give it a priority and then we sort based off of that priority, which is what happens everytime we insert.
+// This priority queue will give us the next node to visit and all that it does it's just an array, and every time you add something to it, you give it a priority and then we sort based off of that priority, which is what happens every time we insert.
 
 class Node {
     constructor(val, priority) {
