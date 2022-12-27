@@ -8,12 +8,14 @@
 
 // WHAT IS OPTIMAL SUBSTRUCTURE? A problem is said to have optimal substructure if an optimal solution can be constructed from optimal solutions of its sub-problems. 
 
+// WHAT IS MEMOIZATION? Storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
 
 
 // =================================================================== DYNAMIC PROGRAMMING EXAMPLE ===================================================================
 
 // ------------------ RECURSIVE SOLUTION ------------------
-// - the TIME COMPLEXITY for this solution is === BIG 0(2**n) === very BAD. this is EXPONENTIAL TIME COMPLEXITY. which is twice as bad compared to QUADRATIC TIME COMPLEXITY
+// - the TIME COMPLEXITY for this solution is === BIG 0(2**n) === very BAD :Q  this is EXPONENTIAL TIME COMPLEXITY. which is twice as bad compared to QUADRATIC TIME COMPLEXITY
 function fib(n) {
     // base case
     if (n <= 2) return 1;
@@ -22,3 +24,9 @@ function fib(n) {
 };
 console.log(fib(7));
 
+// ------------------ A MEMOIZED SOLUTION ------------------
+// the TIME COMPLEXITY for this solution is ===  ===
+function memoFib() {
+    
+};
+console.log(memoFib(7));
