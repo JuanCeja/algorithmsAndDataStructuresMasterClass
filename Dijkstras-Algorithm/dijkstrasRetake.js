@@ -4,21 +4,6 @@
 
 // before we can actually find the shortest path in a graph between 2 points, we need to assign values between those points so we can find any path short or long. so we make our graph a WEIGHTED GRAPH. 
 
-class WeightedGraph {
-    constructor() {
-        this.adjacencyList = {};
-    };
-    
-    addVertex (vertex) {
-        if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
-    };
-
-    addEdge(vertex1, vertex2, weight) {
-        if(this.adjacencyList[vertex1])this.adjacencyList[vertex1].push({node: vertex2, weight});
-        if(this.adjacencyList[vertex2])this.adjacencyList[vertex2].push({node: vertex1, weight});
-    };
-};
-
 // =============================================================================== THE APPROACH ===============================================================================
 
 // Every time we look to visit a new node, we pick the node with the smallest known distance to visit from our current position(node)
@@ -39,7 +24,7 @@ class PriorityQueue {
     };
 
     enqueue(val, priority) {
-        this.values.push({val, priority});
+        this.values.push({ val, priority });
         this.sort();
     };
 
@@ -52,11 +37,96 @@ class PriorityQueue {
     };
 };
 
+// =============================================================================== PRIORITY QUEUE  ==============================================================================
+
+class WeightedGraph {
+    constructor() {
+        this.adjacencyList = {};
+    };
+
+    addVertex(vertex) {
+        if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    };
+
+    addEdge(vertex1, vertex2, weight) {
+        if (this.adjacencyList[vertex1]) this.adjacencyList[vertex1].push({ node: vertex2, weight });
+        if (this.adjacencyList[vertex2]) this.adjacencyList[vertex2].push({ node: vertex1, weight });
+    };
+
+    Dijkstra(start, finish) {
+        const nodes = new PriorityQueue();
+        const distances = {};
+        const previous = {};
+        let smallest;
+
+        // this is what we will return at the end
+        let path = []; 
+
+        // build up initial state
+        for (let vertex in this.adjacencyList) {
+            if (vertex === start) {
+                distances[vertex] = 0;
+                nodes.enqueue(vertex, 0);
+            } else {
+                distances[vertex] = Infinity;
+                nodes.enqueue(vertex, Infinity);
+            };
+            previous[vertex] = null;
+        };
+
+        // as long as there is something to visit
+        while (nodes.values.length) {
+            smallest = nodes.dequeue().val;
+            if(smallest === finish) {
+                // we are done so we build our path to return
+                while(previous[smallest]) {
+                    path.push(smallest);
+                    smallest = previous[smallest];
+                };
+                break;
+            };
+            if(smallest || distances[smallest] !== Infinity) {
+                for(let neighbor in this.adjacencyList[smallest]) {
+                    // find neighboring node
+                    let neighborNode = this.adjacencyList[smallest][neighbor];
+
+                    // calculate new distance to neighbor nodes
+                    let candidate = distances[smallest] + neighborNode.weight;
+                    let nextNeighbor = neighborNode.node;
+
+                    if(candidate < distances[nextNeighbor]) {
+                        // this is updating new smallest distance to neighbor
+                        distances[nextNeighbor] = candidate;
+
+                        // this is updating previous - how we got to neighbor
+                        previous[nextNeighbor] = smallest;
+
+                        // enqueue in priority queue with new priority
+                        nodes.enqueue(nextNeighbor, candidate);
+                    };
+                };
+            };
+        };
+        return path.concat(smallest).reverse();
+    };
+};
+
 let graph = new WeightedGraph();
 graph.addVertex('A');
 graph.addVertex('B');
 graph.addVertex('C');
-graph.addEdge('A', 'B', 9);
-graph.addEdge('A', 'C', 5);
-graph.addEdge('B', 'C', 7);
-console.log(graph.adjacencyList);
+graph.addVertex('D');
+graph.addVertex('E');
+graph.addVertex('F');
+
+graph.addEdge('A', 'B', 4);
+graph.addEdge('A', 'C', 2);
+graph.addEdge('B', 'E', 3);
+graph.addEdge('C', 'D', 2);
+graph.addEdge('C', 'F', 4);
+graph.addEdge('D', 'E', 3);
+graph.addEdge('D', 'F', 1);
+graph.addEdge('E', 'F', 1);
+
+console.log(graph.Dijkstra('A', 'E'));
+console.log(graph.Dijkstra('A', 'F'));
