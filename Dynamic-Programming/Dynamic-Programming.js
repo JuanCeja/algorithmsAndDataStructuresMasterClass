@@ -24,9 +24,13 @@ function fib(n) {
 };
 console.log(fib(7));
 
-// ------------------ A MEMOIZED SOLUTION ------------------
+// ------------------ A MEMOIZATION SOLUTION ------------------
 // the TIME COMPLEXITY for this solution is ===  ===
-function memoFib() {
-    
+function memoFib(n, memo = []) {
+    if(memo[n] !== undefined) return memo[n];
+    if(n <= 2) return 1;
+    let res = memoFib(n - 1, memo) + memoFib(n - 2, memo);
+    memo[n] = res;
+    return res;
 };
-console.log(memoFib(7));
+console.log(memoFib(100));
