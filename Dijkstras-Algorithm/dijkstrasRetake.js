@@ -1,13 +1,3 @@
-// =============================================================================== THE APPROACH ===============================================================================
-
-// Every time we look to visit a new node, we pick the node with the smallest known distance to visit
-
-// Once we've moved to the node we're going to visit, we look at each of it's neighbors
-
-// For each neighboring node, we calculate the distance by summing the total edges that lead to the node we're checking from the starting node
-
-// If the new total distance to a node is less than the previous total, we store the shorter distance for that node
-
 // ========================================================================== SIMPLE WEIGHTED GRAPH ==========================================================================
 
 // we create our weighted graph before we can actually start Dijkstra's Algorithm
@@ -29,7 +19,38 @@ class WeightedGraph {
     };
 };
 
+// =============================================================================== THE APPROACH ===============================================================================
 
+// Every time we look to visit a new node, we pick the node with the smallest known distance to visit from our current position(node)
+
+// Once we've moved to the node we're going to visit, we look at each of it's neighbors
+
+// For each neighboring node, we calculate the distance by summing the total edges that lead to the node we're checking from the starting node
+
+// If the new total distance to a node is less than the previous total, we store the shorter distance for that node
+
+// =============================================================================== PRIORITY QUEUE  ==============================================================================
+
+// ALL our priority queue is going to do is give us the next node to visit. Its just an array, and every time you add something to it, you give it a priority and then we sort based off of that priority, which is what happens here. So every time we INSERT, we resort and then we remove from the array. Because we use the SORT function here. This function has a TIME COMPLEXITY of O(N * log(N)).
+
+class PriorityQueue {
+    constructor() {
+        this.values = [];
+    };
+
+    enqueue(val, priority) {
+        this.values.push({val, priority});
+        this.sort();
+    };
+
+    dequeue() {
+        return this.values.shift();
+    };
+
+    sort() {
+        this.values.sort((a, b) => a.priority - b.priority);
+    };
+};
 
 let graph = new WeightedGraph();
 graph.addVertex('A');
