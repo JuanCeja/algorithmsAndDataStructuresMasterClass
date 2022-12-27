@@ -14,28 +14,91 @@
 
 // If the new total distance to a node is less than the previous total, we store the shorter distance for that node
 
-// =============================================================================== PRIORITY QUEUE  ==============================================================================
+// ======================================================================== BINARY HEAP PRIORITY QUEUE  =======================================================================
 
 // ALL our priority queue is going to do is give us the next node to visit. Its just an array, and every time you add something to it, you give it a priority and then we sort based off of that priority, which is what happens here. So every time we INSERT, we resort and then we remove from the array. Because we use the SORT function here. This function has a TIME COMPLEXITY of O(N * log(N)).
+
+// Upgraded our priority queue to a binary heap priority queue to increase time complexity
 
 class PriorityQueue {
     constructor() {
         this.values = [];
-    };
+    }
 
     enqueue(val, priority) {
-        this.values.push({ val, priority });
-        this.sort();
-    };
+        let newNode = new Node(val, priority);
+        this.values.push(newNode);
+        this.bubbleUp();
+    }
+
+    bubbleUp() {
+        let idx = this.values.length - 1;
+        let element = this.values[idx];
+        while (idx > 0) {
+            let parentIdx = Math.floor((idx - 1) / 2);
+            let parent = this.values[parentIdx];
+            // if you want to make this a MIN Heap change this <= to >=
+            if (element.priority >= parent.priority) break;
+            this.values[parentIdx] = element;
+            this.values[idx] = parent;
+            idx = parentIdx;
+        }
+    }
 
     dequeue() {
-        return this.values.shift();
-    };
+        // change this variable from max to min
+        const max = this.values[0];
+        const end = this.values.pop();
+        if (this.values.length > 0) {
+            this.values[0] = end;
+            this.sinkDown();
+        }
+        // this would be min
+        return max;
+    }
 
-    sort() {
-        this.values.sort((a, b) => a.priority - b.priority);
-    };
-};
+    sinkDown() {
+        let idx = 0;
+        const length = this.values.length;
+        const element = this.values[0];
+
+        while (true) {
+            let leftChildIdx = 2 * idx + 1;
+            let rightChildIdx = 2 * idx + 2;
+            let leftChild, rightChild;
+            let swap = null;
+
+            if (leftChildIdx < length) {
+                leftChild = this.values[leftChildIdx];
+                // change this > to <
+                if (leftChild.priority < element.priority) {
+                    swap = leftChildIdx;
+                }
+            }
+            if (rightChildIdx < length) {
+                rightChild = this.values[rightChildIdx];
+                if (
+                    // change BOTH of these from > to <
+                    swap === null && rightChild.priority < element.priority ||
+                    swap !== null && rightChild.priority < leftChild.priority
+                ) {
+                    swap = rightChildIdx;
+                }
+            }
+            if (swap === null) break;
+            this.values[idx] = this.values[swap];
+            this.values[swap] = element;
+            idx = swap;
+        }
+    }
+}
+
+class Node {
+    constructor(val, priority) {
+        this.val = val;
+        this.priority = priority;
+    }
+}
 
 // =============================================================================== PRIORITY QUEUE  ==============================================================================
 
@@ -60,7 +123,7 @@ class WeightedGraph {
         let smallest;
 
         // this is what we will return at the end
-        let path = []; 
+        let path = [];
 
         // build up initial state
         for (let vertex in this.adjacencyList) {
@@ -77,16 +140,16 @@ class WeightedGraph {
         // as long as there is something to visit
         while (nodes.values.length) {
             smallest = nodes.dequeue().val;
-            if(smallest === finish) {
+            if (smallest === finish) {
                 // we are done so we build our path to return
-                while(previous[smallest]) {
+                while (previous[smallest]) {
                     path.push(smallest);
                     smallest = previous[smallest];
                 };
                 break;
             };
-            if(smallest || distances[smallest] !== Infinity) {
-                for(let neighbor in this.adjacencyList[smallest]) {
+            if (smallest || distances[smallest] !== Infinity) {
+                for (let neighbor in this.adjacencyList[smallest]) {
                     // find neighboring node
                     let neighborNode = this.adjacencyList[smallest][neighbor];
 
@@ -94,7 +157,7 @@ class WeightedGraph {
                     let candidate = distances[smallest] + neighborNode.weight;
                     let nextNeighbor = neighborNode.node;
 
-                    if(candidate < distances[nextNeighbor]) {
+                    if (candidate < distances[nextNeighbor]) {
                         // this is updating new smallest distance to neighbor
                         distances[nextNeighbor] = candidate;
 
