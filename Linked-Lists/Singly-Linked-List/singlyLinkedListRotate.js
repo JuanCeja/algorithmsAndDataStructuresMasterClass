@@ -151,7 +151,7 @@ class SinglyLinkedList {
 
         let current = this.head;
         let counter = 0;
-        
+
         while (counter < place) {
             this.push(current.val)
             this.shift(current.val)
@@ -181,5 +181,5 @@ list.push(350);
 list.push(999);
 console.log(list);
 list.print();
-list.reverse();
+list.rotate(3);
 list.print();
