@@ -111,7 +111,7 @@ class SinglyLinkedList {
         if(index < 0 || index > this.length) return false;
             
 
-        // if the index is the same as the length, PUSH a new node to the end ofthe list
+        // if the index is the same as the length, PUSH a new node to the end of the list
         if (index === this.length) return !!this.push(value)
             
         // if the index is 0, UNSHIFT a new node to the start of the list
