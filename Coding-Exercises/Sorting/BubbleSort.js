@@ -13,11 +13,63 @@
 // bubbleSort([1, 2, 3]); // [1, 2, 3]
 // bubbleSort([]);
 
+// var kitties = ["LilBub", "Garfield", "Heathcliff", "Blue", "Grumpy"];
+
+// function strComp(a, b) {
+//     if (a < b) { return -1; }
+//     else if (a > b) { return 1; }
+//     return 0;
+// }
+
+// bubbleSort(kitties, strComp); // ["Blue", "Garfield", "Grumpy", "Heathcliff", "LilBub"]
+
+// var moarKittyData = [{
+//     name: "LilBub",
+//     age: 7
+// }, {
+//     name: "Garfield",
+//     age: 40
+// }, {
+//     name: "Heathcliff",
+//     age: 45
+// }, {
+//     name: "Blue",
+//     age: 1
+// }, {
+//     name: "Grumpy",
+//     age: 6
+// }];
+
+// function oldestToYoungest(a, b) {
+//     return b.age - a.age;
+// }
+
+// bubbleSort(moarKittyData, oldestToYoungest); // sorted by age in descending order
+
 // ===============================================================================================================================================================================================================================
 
-function bubbleSort(arr) {
-    
-};
+function bubbleSort(arr, comparator) {
+    if (typeof comparator !== 'function') {
+        comparator = (v1, v2) => {
+            return v1 - v2;
+        }
+    }
+    let end = arr.length;
+    let swap = true;
+    while (end > 0 && swap) {
+        swap = false;
+        for (let i = 0; i < end - 1; i++) {
+            if (comparator(arr[i], arr[i + 1]) > 0) {
+                let tmp = arr[i + 1];
+                arr[i + 1] = arr[i];
+                arr[i] = tmp;
+                swap = true;
+            }
+        }
+        end--;
+    }
+    return arr;
+}
 
 console.log(bubbleSort([4, 20, 12, 10, 7, 9])); // [4, 7, 9, 10, 12, 20]
 console.log(bubbleSort([0, -10, 7, 4])); // [-10, 0, 4, 7]
