@@ -27,43 +27,48 @@
 
 // selectionSort(kitties, strComp); // ["Blue", "Garfield", "Grumpy", "Heathcliff", "LilBub"]
 
-// var moarKittyData = [{
-//     name: "LilBub",
-//     age: 7
-// }, {
-//     name: "Garfield",
-//     age: 40
-// }, {
-//     name: "Heathcliff",
-//     age: 45
-// }, {
-//     name: "Blue",
-//     age: 1
-// }, {
-//     name: "Grumpy",
-//     age: 6
-// }];
-
-// function oldestToYoungest(a, b) {
-//     return b.age - a.age;
-// }
-
-// selectionSort(moarKittyData, oldestToYoungest); // sorted by age in descending order
 
 // ==================================================================================================================================================================================
 
-function selectionSort(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        let smallest = i;
+var moarKittyData = [{
+    name: "LilBub",
+    age: 7
+}, {
+    name: "Garfield",
+    age: 40
+}, {
+    name: "Heathcliff",
+    age: 45
+}, {
+    name: "Blue",
+    age: 1
+}, {
+    name: "Grumpy",
+    age: 6
+}];
+
+function oldestToYoungest(a, b) {
+    return b.age - a.age;
+}
+
+
+function selectionSort(arr, comparator) {
+    let minIdx;
+    if (typeof comparator !== 'function') {
+        comparator = (a, b) => a - b;
+    }
+    for (let i = 0; i < arr.length - 1; i++) {
+        minIdx = i;
         for (let j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[smallest]) smallest = j;
+            if (comparator(arr[j], arr[minIdx]) < 0) minIdx = j;
         }
-        [[arr[i], arr[smallest]] = [arr[smallest], arr[i]]];
+        if (minIdx !== i) [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
     }
     return arr;
-};
+}
 
 console.log(selectionSort([4, 20, 12, 10, 7, 9])); // [4, 7, 9, 10, 12, 20]
 console.log(selectionSort([0, -10, 7, 4])); // [-10, 0, 4, 7]
 console.log(selectionSort([1, 2, 3])); // [1, 2, 3]
 console.log(selectionSort([]));
+console.log(selectionSort(moarKittyData, oldestToYoungest)); // sorted by age in descending order
