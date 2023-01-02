@@ -53,22 +53,13 @@
 // ==================================================================================================================================================================================
 
 function selectionSort(arr) {
-    // store the first element as the smallest value you've seen so far
     for (let i = 0; i < arr.length; i++) {
         let smallest = i;
-
-        // compare this item to the next item in the array until you find a smaller number
         for (let j = i + 1; j < arr.length; j++) {
-
-            // if a smaller number is found, designate that smaller number to be the new minimum and continue until the end of the array
             if (arr[j] < arr[smallest]) smallest = j;
-
         }
-        // if the minimum is not the value(index) you initially began with, swap the two values
         [[arr[i], arr[smallest]] = [arr[smallest], arr[i]]];
     }
-
-    // return our sorted array
     return arr;
 };
 
