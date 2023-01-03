@@ -30,42 +30,35 @@
 
 //                                      ********* merge helper function ***********
 
-function merge(arr1, arr2) {
-    // create an empty array, take a look at the smallest values in each array input
-    let results = [];
-    let pointer1 = 0;
-    let pointer2 = 0;
-
-    // while there are still values we haven't looked at
-    while (pointer1 < arr1.length && pointer2 < arr2.length) {
-
-        // if the value in the first array is smaller than the value in the second array, push the value in the first array into our results and move on to the next value in the first array
-        if (arr1[pointer1] < arr2[pointer2]) {
-            results.push(arr1[pointer1]);
-            pointer1++;
+function merge(arr1, arr2, comparator) {
+    let i = 0;
+    let j = 0;
+    let sortedArr = [];
+    if (typeof comparator !== 'function') {
+        comparator = (a, b) => a - b;
+    }
+    while (i < arr1.length && j < arr2.length) {
+        if (comparator(arr1[i], arr2[j]) <= 0) {
+            sortedArr.push(arr1[i]);
+            i++;
         } else {
-            
-            // if the first array is larger than the value in the second array, push the value in the second array into our results and move on to the next value in the second array
-            results.push(arr2[pointer2]);
-            pointer2++;
+            sortedArr.push(arr2[j]);
+            j++;
         }
+    }
+    while (i < arr1.length) {
+        sortedArr.push(arr1[i]);
+        i++;
+    }
+    while (j < arr2.length) {
+        sortedArr.push(arr2[j]);
+        j++;
+    }
+    return sortedArr;
+};
 
-
-
-    };
-    // once we exhaust one array, push in all remaining values from the other array
-    while (pointer1 < arr1.length) {
-        results.push(arr1[pointer1]);
-        pointer1++
-    };
-
-    while (pointer2 < arr2.length) {
-        results.push(arr2[pointer2]);
-        pointer2++
-    };
-
-    // return our results array
-    return results;
+function stringLengthComparator(str1, str2) {
+    return str1.length - str2.length;
 };
 
 let arr1 = [1, 3, 4, 5];
@@ -74,7 +67,10 @@ let arr3 = [-2, -1, 0, 4, 5, 6];
 let arr4 = [-3, -2, -1, 2, 3, 5, 7, 8];
 let arr5 = [3, 4, 5]
 let arr6 = [1, 2]
+let names = ["Bob", "Ethel", "Christine"]
+let otherNames = ["M", "Colt", "Allison", "SuperLongNameOMG"]
 
 console.log(merge(arr1, arr2)); // [1,2,3,4,4,5,6,8]
 console.log(merge(arr3, arr4)); // [-3,-2,-2,-1,-1,0,2,3,4,5,5,6,7,8]
 console.log(merge(arr5, arr6)); // [1,2,3,4,5]
+console.log(merge(names, otherNames, stringLengthComparator)); // ["M", "Bob", "Colt", "Ethel", "Allison", "Christine", "SuperLongNameOMG"]
