@@ -64,10 +64,45 @@ function stringLengthComparator(str1, str2) {
 
 //                                      ********* recursive merge sort ***********
 
-function mergeSort(arr) {
-    // break up the array into halves until you have arrays that are empty or have one element
+var nums = [4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34, 23, 2, 453, 546, 75, 67, 4342, 32];
 
-    // once you have smaller sorted arrays, merge those arrays with other sorted arrays until you are back at the full length of the array
+var kitties = ["LilBub", "Garfield", "Heathcliff", "Blue", "Grumpy"];
 
-    // once the array has been merged back together, return the merged (and sorted!) array
-};
+let moarKittyData = [{
+    name: "LilBub",
+    age: 7
+}, {
+    name: "Garfield",
+    age: 40
+}, {
+    name: "Heathcliff",
+    age: 45
+}, {
+    name: "Blue",
+    age: 1
+}, {
+    name: "Grumpy",
+    age: 6
+}];
+
+function strComp(a, b) {
+    if (a < b) { return -1; }
+    else if (a > b) { return 1; }
+    return 0;
+}
+
+function oldestToYoungest(a, b) {
+    return b.age - a.age;
+}
+
+function mergeSort(arr, comparator) {
+    if (arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length / 2);
+    let left = mergeSort(arr.slice(0, mid), comparator);
+    let right = mergeSort(arr.slice(mid), comparator);
+    return merge(left, right, comparator);
+}
+
+console.log(mergeSort(nums)); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 34, 35, 43, 67, 75, 232, 232, 453, 546, 4342]
+console.log(mergeSort(kitties, strComp)); // ["Blue", "Garfield", "Grumpy", "Heathcliff", "LilBub"]
+console.log(mergeSort(moarKittyData, oldestToYoungest)); // sorted by age in descending order
