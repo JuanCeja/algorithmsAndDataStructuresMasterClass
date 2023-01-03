@@ -61,16 +61,13 @@ function stringLengthComparator(str1, str2) {
     return str1.length - str2.length;
 };
 
-let arr1 = [1, 3, 4, 5];
-let arr2 = [2, 4, 6, 8];
-let arr3 = [-2, -1, 0, 4, 5, 6];
-let arr4 = [-3, -2, -1, 2, 3, 5, 7, 8];
-let arr5 = [3, 4, 5]
-let arr6 = [1, 2]
-let names = ["Bob", "Ethel", "Christine"]
-let otherNames = ["M", "Colt", "Allison", "SuperLongNameOMG"]
 
-console.log(merge(arr1, arr2)); // [1,2,3,4,4,5,6,8]
-console.log(merge(arr3, arr4)); // [-3,-2,-2,-1,-1,0,2,3,4,5,5,6,7,8]
-console.log(merge(arr5, arr6)); // [1,2,3,4,5]
-console.log(merge(names, otherNames, stringLengthComparator)); // ["M", "Bob", "Colt", "Ethel", "Allison", "Christine", "SuperLongNameOMG"]
+//                                      ********* recursive merge sort ***********
+
+function mergeSort(arr) {
+    // break up the array into halves until you have arrays that are empty or have one element
+
+    // once you have smaller sorted arrays, merge those arrays with other sorted arrays until you are back at the full length of the array
+
+    // once the array has been merged back together, return the merged (and sorted!) array
+};
