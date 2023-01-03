@@ -23,8 +23,9 @@ class SinglyLinkedList {
     constructor(val) {
         this.val = val
         this.next = null;
+        this.length = 0;
     }
-    push() {
+    push(val) {
         var newNode = new Node(val);
         if (!this.head) {
             this.head = newNode;
@@ -34,10 +35,34 @@ class SinglyLinkedList {
             this.tail = newNode;
         }
         this.length++;
+
         return this;
     }
-    remove() {
-        
+    remove(index) {
+
+        if (index > this.length) {
+            return undefined;
+        }
+
+        if (index === 0) {
+            let temp = this.head;
+            this.head = this.head.next;
+            this.length--;
+            return temp;
+        }
+
+        let temp = this.head;
+
+        for (let i = 1; i <= index - 1; i++) {
+            temp = temp.next;
+        }
+
+        let returnValue = temp.next;
+        temp.next = temp.next.next;
+        this.length--;
+
+        return returnValue;
+
     }
 }
 
