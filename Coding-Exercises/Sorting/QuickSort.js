@@ -23,18 +23,72 @@
 
 // ==================================================================================================================================================================================
 
-function pivot(arr, comparator, start = 0, end = arr.length - 1) {
+//                  ****** pivot helper function ******
 
+function pivot(arr, comparator, start = 0, end = arr.length - 1) {
+    let pivotIdx = start,
+        pivot = arr[pivotIdx];
+    if (typeof comparator !== 'function') {
+        comparator = (a, b) => a - b;
+    }
+    for (let i = start + 1; i <= end; i++) {
+        if (comparator(pivot, arr[i]) > 0) {
+            pivotIdx++;
+            [arr[pivotIdx], arr[i]] = [arr[i], arr[pivotIdx]];
+        }
+    }
+    [arr[start], arr[pivotIdx]] = [arr[pivotIdx], arr[start]];
+    return pivotIdx;
 };
 
 function strLength(a, b) {
     return a.length - b.length
 }
 
-var arr1 = [5, 4, 9, 10, 2, 20, 8, 7, 3];
-var arr2 = [8, 4, 2, 5, 0, 10, 11, 12, 13, 16];
-var arr3 = ["LilBub", "Garfield", "Heathcliff", "Blue", "Grumpy"];
+function strComp(a, b) {
+    if (a < b) { return -1; }
+    else if (a > b) { return 1; }
+    return 0;
+}
 
-console.log(pivot(arr1)); // 3
-console.log(pivot(arr2)); // 4
-console.log(pivot(arr3, strLength)); // 1
+function oldestToYoungest(a, b) {
+    return b.age - a.age;
+}
+
+//                  ****** quick sort function ******
+
+function quickSort(arr, comparator, start = 0, end = arr.length - 1) {
+    let pivotIdx;
+    if (start < end) {
+        pivotIdx = pivot(arr, comparator, start, end);
+        quickSort(arr, comparator, start, pivotIdx - 1); // sort left
+        quickSort(arr, comparator, pivotIdx + 1, end); // sort right
+    }
+    return arr;
+}
+
+
+let nums = [4, 3, 5, 3, 43, 232, 4, 34, 232, 32, 4, 35, 34, 23, 2, 453, 546, 75, 67, 4342, 32];
+
+let kitties = ["LilBub", "Garfield", "Heathcliff", "Blue", "Grumpy"];
+
+let moarKittyData = [{
+    name: "LilBub",
+    age: 7
+}, {
+    name: "Garfield",
+    age: 40
+}, {
+    name: "Heathcliff",
+    age: 45
+}, {
+    name: "Blue",
+    age: 1
+}, {
+    name: "Grumpy",
+    age: 6
+}];
+
+console.log(quickSort(nums)); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 34, 35, 43, 67, 75, 232, 232, 453, 546, 4342]
+console.log(quickSort(kitties, strComp)); // ["Blue", "Garfield", "Grumpy", "Heathcliff", "LilBub"]
+console.log(quickSort(moarKittyData, oldestToYoungest)); // sorted by age in descending order
