@@ -32,16 +32,40 @@
 
 function merge(arr1, arr2) {
     // create an empty array, take a look at the smallest values in each array input
+    let results = [];
+    let pointer1 = 0;
+    let pointer2 = 0;
 
-    // while there are still values we haven't looked at 
+    // while there are still values we haven't looked at
+    while (pointer1 < arr1.length && pointer2 < arr2.length) {
 
         // if the value in the first array is smaller than the value in the second array, push the value in the first array into our results and move on to the next value in the first array
+        if (arr1[pointer1] < arr2[pointer2]) {
+            results.push(arr1[pointer1]);
+            pointer1++;
+        } else {
+            
+            // if the first array is larger than the value in the second array, push the value in the second array into our results and move on to the next value in the second array
+            results.push(arr2[pointer2]);
+            pointer2++;
+        }
 
-        // if the first array is larger than the value in the second array, push the value in the second array into our results and move on to the next value in the second array
 
-        // once we exhaust one array, push in all remaining values from the other array
+
+    };
+    // once we exhaust one array, push in all remaining values from the other array
+    while (pointer1 < arr1.length) {
+        results.push(arr1[pointer1]);
+        pointer1++
+    };
+
+    while (pointer2 < arr2.length) {
+        results.push(arr2[pointer2]);
+        pointer2++
+    };
 
     // return our results array
+    return results;
 };
 
 let arr1 = [1, 3, 4, 5];
