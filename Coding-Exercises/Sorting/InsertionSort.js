@@ -20,13 +20,16 @@
 // =================================================================================================================================================================================
 
 function insertionSort(arr) {
-    // start by picking the second element in the array
-
-    // now compare the second element with the one before it and swap if necessary
-
-    // continue to the next element and if it is in the incorrect order, iterate through the sorted portion(i.e the left side) to place the element in the correct place
-
-    // return our arr
+    for (let i = 1; i < arr.length; i++) {
+        for (let j = i; j > 0; j--) {
+            if (arr[j] < arr[j - 1]) {
+                [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]]
+            } else {
+                break;
+            }
+        }
+    }
+    return arr;
 };
 
 console.log(insertionSort([4, 20, 12, 10, 7, 9])); // [4, 7, 9, 10, 12, 20]
