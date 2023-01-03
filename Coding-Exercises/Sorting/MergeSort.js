@@ -31,7 +31,17 @@
 //                                      ********* merge helper function ***********
 
 function merge(arr1, arr2) {
-    
+    // create an empty array, take a look at the smallest values in each array input
+
+    // while there are still values we haven't looked at 
+
+        // if the value in the first array is smaller than the value in the second array, push the value in the first array into our results and move on to the next value in the first array
+
+        // if the first array is larger than the value in the second array, push the value in the second array into our results and move on to the next value in the second array
+
+        // once we exhaust one array, push in all remaining values from the other array
+
+    // return our results array
 };
 
 let arr1 = [1, 3, 4, 5];
