@@ -34,21 +34,19 @@ function mostDigits(arr) {
 };
 
 function radixSort(arr) {
-    // figure out how many digits the largest number has
+    let mostDigitsCount = mostDigits(arr);
 
-    // loop from k = 0 up to this largest number of digits 
-
-    // for each iteration of the loop:
-        // create buckets for each digit (0 to 9)
-
-        // place each number in the corresponding bucket based on its k-th digit
-
-    // replace our existing array with values in our buckets, starting with 0 and going up to 9 
-
-    // return our list
+    for (let i = 0; i < mostDigitsCount; i++) {
+        let digitBuckets = Array.from({ length: 10 }, () => []);
+        for (let j = 0; j < arr.length; j++) {
+            let digit = getDigit(arr[j], i);
+            digitBuckets[digit].push(arr[j]);
+        }
+        arr = [].concat(...digitBuckets);
+    }
+    return arr;
 };
 
 console.log(radixSort([8, 6, 1, 12])); // [1, 6, 8, 12]
 console.log(radixSort([10, 100, 1, 1000, 10000000])); // [1, 10, 100, 1000, 10000000]
-console.log(radixSort([902, 4, 7, 408, 29, 9637, 1556, 3556, 8157, 4386, 86, 593]));
-// [4, 7, 29, 86, 408, 593, 902, 1556, 3556, 4386, 8157, 9637]
+console.log(radixSort([902, 4, 7, 408, 29, 9637, 1556, 3556, 8157, 4386, 86, 593])); // [4, 7, 29, 86, 408, 593, 902, 1556, 3556, 4386, 8157, 9637]
