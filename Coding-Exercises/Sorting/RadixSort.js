@@ -18,19 +18,20 @@ function getDigit(num, i) {
     return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
 };
 
-// ****** Get Digit Count Function ******
+// ****** Get Digit Count Helper Function ******
 function digitCount(num) {
-    if(num === 0) return 1;
+    if (num === 0) return 1;
     return Math.floor(Math.log10(Math.abs(num))) + 1;
 };
 
-console.log(digitCount(1)); // 1
-console.log(digitCount(9)); // 1
-console.log(digitCount(25)); // 2
-console.log(digitCount(314)); // 3
-console.log(digitCount(1234)); // 4
-console.log(digitCount(77777)); // 5
+// ****** Most Digits Helper Function ******
+function mostDigits(nums) {
 
+};
+
+console.log(mostDigits([1234, 56, 7])) // 4
+console.log(mostDigits([1, 1, 11111, 1])) // 5
+console.log(mostDigits([12, 34, 56, 78])) // 2
 
 // console.log(radixSort([8, 6, 1, 12])); // [1, 6, 8, 12]
 // console.log(radixSort([10, 100, 1, 1000, 10000000])); // [1, 10, 100, 1000, 10000000]
