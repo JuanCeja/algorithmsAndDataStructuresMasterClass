@@ -25,13 +25,15 @@ function digitCount(num) {
 };
 
 // ****** Most Digits Helper Function ******
-function mostDigits(nums) {
-
+function mostDigits(arr) {
+    let maxDigits = 0;
+    for (let i = 0; i < arr.length; i++) {
+        maxDigits = Math.max(maxDigits, digitCount(arr[i]));
+    }
+    return maxDigits;
 };
 
-console.log(mostDigits([1234, 56, 7])) // 4
-console.log(mostDigits([1, 1, 11111, 1])) // 5
-console.log(mostDigits([12, 34, 56, 78])) // 2
+
 
 // console.log(radixSort([8, 6, 1, 12])); // [1, 6, 8, 12]
 // console.log(radixSort([10, 100, 1, 1000, 10000000])); // [1, 10, 100, 1000, 10000000]
