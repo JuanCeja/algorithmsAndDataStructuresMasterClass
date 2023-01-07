@@ -45,7 +45,19 @@ class BinarySearchTree {
     }
 
     find(val) {
-        
+        if(!this.root) return undefined;
+        if(this.root.value === val) return true;
+        let current = this.root;
+        while(true) {
+            if(current.value === val) return true;
+            if(val < current.value) {
+                if(current.left) current = current.left;
+                else return undefined;
+            } else {
+                if(current.right) current = current.right;
+                else return undefined;
+            }
+        }
     }
 }
 
@@ -54,11 +66,13 @@ let binarySearchTree = new BinarySearchTree();
 binarySearchTree.insert(15);
 binarySearchTree.insert(20);
 binarySearchTree.insert(10);
+binarySearchTree.insert(210);
 binarySearchTree.insert(12);
-console.log(binarySearchTree.find(15));
-console.log(binarySearchTree.find(20));
-console.log(binarySearchTree.find(10));
-console.log(binarySearchTree.find(12));
-console.log(binarySearchTree.find(99));
-console.log(binarySearchTree.find(7));
-console.log(binarySearchTree.find(-7));
+console.log(binarySearchTree.find(15)); // true
+console.log(binarySearchTree.find(210)); // true
+console.log(binarySearchTree.find(20)); // true
+console.log(binarySearchTree.find(10)); // true
+console.log(binarySearchTree.find(12)); // true
+console.log(binarySearchTree.find(99)); // undefined
+console.log(binarySearchTree.find(7)); // undefined
+console.log(binarySearchTree.find(-7)); // undefined
