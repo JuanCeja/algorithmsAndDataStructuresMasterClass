@@ -19,19 +19,31 @@ class BinarySearchTree {
         this.root = null;
     }
     insert(value) {
-        let newNode  = new Node(value);
-        if(this.root === null) this.root = newNode;
-        // if there is a root, check if the value of the new node is greater than or less than the value of the root
-
-            // if it is greater
-                // check to see if there is a node to the right
-                    // if there is, move to that node and repeat these steps
-                    // if there is not, add that node as the right property and return tree
-                
-            // if it is less
-                // check to see if there is a node to the left
-                    // if there is, move to that node and repeat these steps
-                    // if there is not, add that node as the left property and return tree
+        let newNode = new Node(value);
+        if (this.root === null) {
+            this.root = newNode;
+            return this;
+        };
+        let current = this.root;
+        while (true) {
+            if (value === current.value) return undefined;
+            if (value > current.value) {
+                if (current.right) {
+                    current = current.right;
+                } else {
+                    current.right = newNode;
+                    break;
+                }
+            } else {
+                if (current.left) {
+                    current = current.left;
+                } else {
+                    current.left = newNode;
+                    break;
+                }
+            }
+        };
+        return this;
     }
 }
 
