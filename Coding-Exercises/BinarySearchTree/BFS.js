@@ -91,19 +91,17 @@ class BinarySearchTree {
     }
 
     BFS() {
-        // create a queue and a variable to store the values of nodes visited
+        let queue = [this.root];
+        let visited = [];
 
-        // place the root node in the queue
+        while (queue.length) {
+            let node = queue.shift();
 
-        // loop as long as there is anything in the queue
-
-            // dequeue a node from the queue and push the value of the node into the variable that stores the nodes
-
-            // if there is a left property on the node queued - add it to the queue
-
-            // if there is a right property on the node queued - add it to the queue
-
-        // return the variable that stores the values
+            visited.push(node.value);
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+        return visited;
     }
 }
 
