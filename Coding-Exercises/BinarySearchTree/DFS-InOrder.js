@@ -2,9 +2,9 @@
 
 // Implement the following functions on the BinarySearchTree.prototype. insert has been implemented for you to help with testing.
 
-// DFSPreOrder
+// DFSInOrder
 
-// This function should search through each node in the binary search tree using pre-order depth first search and return an array containing each node's value.
+// This function should search through each node in the binary search tree using in-order depth first search and return an array containing each node's value.
 
 // ============================================================================================================================================================================================
 
@@ -59,6 +59,21 @@ class BinarySearchTree {
         helperFunction(current);
         return data;
     }
+
+    DFSInOrder() {
+        if(!this.root) return undefined;
+        
+        let data = [];
+        let current = this.root;
+
+        let helperFunction = (node) => {
+            if(node.left) helperFunction(node.left);
+            data.push(node.value)
+            if(node.right)helperFunction(node.right);
+        }
+        helperFunction(current);
+        return data;
+    }
 }
 
 let tree = new BinarySearchTree();
@@ -69,6 +84,7 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 console.log(tree.DFSPreOrder());
+console.log(tree.DFSInOrder());
 
 // BFS = [10, 6, 15, 3, 8, 20]
 // DFS Pre Order output = [10, 6, 3, 8, 15, 20]
