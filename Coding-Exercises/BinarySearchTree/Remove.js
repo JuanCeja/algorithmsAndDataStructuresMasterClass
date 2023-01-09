@@ -44,8 +44,44 @@ class BinarySearchTree {
             }
         }
     }
+
     remove(val) {
-        
+        let delNode;
+        const del = (root, val) => {
+            if (root === null) return root;
+            else if (val > root.value) root.right = del(root.right, val);
+            else if (val < root.value) root.left = del(root.left, val);
+            else { // if node is found
+                if (delNode === undefined) delNode = root.value;
+                // case 1: no children (leaf)
+                if (root.left === null && root.right === null) {
+                    root = null;
+                }
+
+                // case 2: 1 child
+                else if (root.left === null) { // right child
+                    root = root.right;
+                } else if (root.right === null) { // left child
+                    root = root.left;
+                }
+
+                // case 3: 2 children
+                else {
+                    let temp = findMin(root.right); // assign a root to min in a right subtree
+                    root.value = temp.value;
+                    root.right = del(root.right, root.value);
+                }
+            }
+            return root;
+        }
+        const findMin = root => {
+            if (root === null) return root;
+            if (root.left) return findMin(root.left);
+            return root;
+        }
+
+        this.root = del(this.root, val);
+        return delNode;
     }
 }
 
@@ -56,3 +92,4 @@ tree.insert(15);
 tree.insert(3);
 tree.insert(8);
 tree.insert(20);
+console.log(tree.remove(20));
