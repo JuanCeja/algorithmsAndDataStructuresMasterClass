@@ -45,22 +45,19 @@ class BinarySearchTree {
             }
         }
     }
-    depthFirstSearchPreOrder() {
-        // create a variable to store the values of nodes visited
+    DFSPreOrder() {
+        if(!this.root) return undefined;
 
-        // store the root of the BST in a variable called current
+        let data = [];
+        let current = this.root;
 
-        // write a helper function which accepts a node
-
-            // push the value of the node to the variable that stores the values
-
-            // if the node has a left property, call the helper function with the left property on the node
-
-            // if the node has a right property, call the helper function with the right property on the node
-
-        // invoke the helper function with the current variable
-
-        // return the array of values
+        let helperFunction = (node) => {
+            data.push(node.value)
+            if(node.left) helperFunction(node.left);
+            if(node.right)helperFunction(node.right);
+        }
+        helperFunction(current);
+        return data;
     }
 }
 
