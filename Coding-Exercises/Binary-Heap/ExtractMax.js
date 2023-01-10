@@ -20,7 +20,7 @@ class MaxBinaryHeap {
         while (idx > 0) {
             let parentIdx = Math.floor((idx - 1) / 2);
             let parent = this.values[parentIdx];
-            if(element <= parent) break;
+            if (element <= parent) break;
             this.values[parentIdx] = element;
             this.values[idx] = parent;
             idx = parentIdx;
@@ -34,31 +34,49 @@ class MaxBinaryHeap {
     }
 
     sinkDown() {
-        // your parent index starts at 0 (the root)
+        let idx = 0;
+        const length = this.values.length;
+        const element = this.values[0];
 
-        // find the index of the left child 2 * index + 1 (make sure its not out of bounds)
+        while (true) {
+            let leftChildIdx = 2 * idx + 1;
+            let rightChildIdx = 2 * idx + 2;
+            let leftChild, rightChild;
 
-        // find the index of the right child 2 * index + 2 (make sure its not out of bounds)
+            let swap = null;
 
-        // if the left or right child is greater than the element...swap. if both left and right children are larger, swap the largest child
+            if (leftChildIdx < length) {
+                leftChild = this.values[leftChildIdx];
+                if (leftChild > element) {
+                    swap = leftChildIdx;
+                }
+            }
 
-        // the child index you swapped to now becomes the new parent index
-
-        // keep looping and swapping until neither child is larger than the element
-
-        // return old root
+            if (rightChildIdx < length) {
+                rightChild = this.values[rightChildIdx];
+                if (
+                    swap === null && rightChild > element ||
+                    swap !== null && rightChild > leftChild
+                ) {
+                    swap = rightChildIdx;
+                }
+            }
+            if (swap === null) break;
+            this.values[idx] = this.values[swap];
+            this.values[swap] = element;
+            idx = swap;
+        }
     }
 
     extractMax() {
-        // swap the first value in the values property with the last one
-
-        // pop from the values property, so you can return the value at the end
-
-        // have the new root 'sink down' to the correct spot
-
-        // return values
+        const max = this.values[0];
+        const end = this.values.pop();
+        if (this.values.length > 0) {
+            this.values[0] = end;
+            this.sinkDown();
+        }
+        return max;
     }
-
 }
 
 let binaryHeap = new MaxBinaryHeap()
@@ -68,6 +86,9 @@ binaryHeap.insert(3)
 binaryHeap.insert(4)
 binaryHeap.insert(5)
 binaryHeap.insert(6)
-console.log(binaryHeap()); // [5,4,2,1,3]
-console.log(binaryHeap.extractMax()) // [4,3,2,1]
-console.log(binaryHeap.extractMax()) // [3,1,2]
+console.log(binaryHeap.extractMax());
+console.log(binaryHeap.values) // [5,4,2,1,3]
+console.log(binaryHeap.extractMax());
+console.log(binaryHeap.values) // [4,3,2,1]
+console.log(binaryHeap.extractMax());
+console.log(binaryHeap.values) // [3,1,2]
