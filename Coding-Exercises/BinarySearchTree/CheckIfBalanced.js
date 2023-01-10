@@ -47,15 +47,35 @@ class BinarySearchTree {
     }
 
     isBalanced() {
-        
+        let isBalanced = true;
+        checkBST(this.root);
+
+        function checkBST(root) {
+            if (!root) return 0;
+            let lCount = checkBST(root.left);
+            let rCount = checkBST(root.right);
+            if (!isBalanced) return 0;
+            if (Math.abs(lCount - rCount) > 1) {
+                isBalanced = false;
+            } else {
+                return (lCount + rCount) + 1;
+            }
+        }
+        return isBalanced;
     }
 }
 
-let tree = new BinarySearchTree();
-tree.insert(10);
-tree.insert(6);
-tree.insert(15);
-tree.insert(3);
-tree.insert(8);
-tree.insert(20);
-console.log(tree.isBalanced());
+let binarySearchTree = new BinarySearchTree();
+binarySearchTree.insert(15);
+binarySearchTree.insert(20);
+binarySearchTree.insert(10);
+binarySearchTree.insert(12);
+console.log(binarySearchTree.isBalanced()); // true
+
+let binarySearchTree2 = new BinarySearchTree();
+binarySearchTree2.insert(5);
+console.log(binarySearchTree2.isBalanced()); // true
+binarySearchTree2.insert(6);
+console.log(binarySearchTree2.isBalanced()); // true
+binarySearchTree2.insert(7);
+console.log(binarySearchTree2.isBalanced()); // false
