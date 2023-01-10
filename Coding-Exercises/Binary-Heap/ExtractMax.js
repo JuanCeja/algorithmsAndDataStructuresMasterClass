@@ -33,8 +33,30 @@ class MaxBinaryHeap {
         return this.values;
     }
 
+    sinkDown() {
+        // your parent index starts at 0 (the root)
+
+        // find the index of the left child 2 * index + 1 (make sure its not out of bounds)
+
+        // find the index of the right child 2 * index + 2 (make sure its not out of bounds)
+
+        // if the left or right child is greater than the element...swap. if both left and right children are larger, swap the largest child
+
+        // the child index you swapped to now becomes the new parent index
+
+        // keep looping and swapping until neither child is larger than the element
+
+        // return old root
+    }
+
     extractMax() {
-        
+        // swap the first value in the values property with the last one
+
+        // pop from the values property, so you can return the value at the end
+
+        // have the new root 'sink down' to the correct spot
+
+        // return values
     }
 
 }
