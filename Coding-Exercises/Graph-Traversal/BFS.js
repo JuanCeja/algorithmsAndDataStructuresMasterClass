@@ -47,7 +47,23 @@ class Graph {
     }
 
     breadthFirstSearch(start) {
-        
+        // create a queue and place the starting vertex in it
+
+        // create an array to store the nodes visited
+
+        // create an object to store nodes visited
+
+        // mark the starting vertex as visited
+
+        // loop as long as there is anything in the queue
+
+            // remove the first vertex from the queue and push it into the array that stores nodes visited
+
+            // loop over each vertex in the adjacency list for the vertex you are visiting
+
+            // if it is not inside the object that stores nodes visited, mark it as visited and queue that vertex
+            
+        // return the array of visited nodes
     }
 }
 
