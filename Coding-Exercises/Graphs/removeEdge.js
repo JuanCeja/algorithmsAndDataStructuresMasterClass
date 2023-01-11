@@ -25,9 +25,11 @@ class Graph {
     }
 
     removeVertex(vertex) {
-        // loop as long as there are any other vertices in the adjacency list for that vertex 
-
-            // inside the loop, call our removeEdge function with the vertex we are removing and any values in the adjacency list for that vertex
+        while (this.adjacencyList[vertex].length) {
+            const adjacentVertex = this.adjacencyList[vertex].pop();
+            this.removeEdge(adjacentVertex, vertex);
+        }
+        delete this.adjacencyList[vertex];
     }
 }
 
@@ -38,6 +40,7 @@ graph.addVertex('B');
 graph.addVertex('C');
 graph.addVertex('D');
 graph.addEdge('A', 'B');
+graph.addEdge('A', 'D');
 graph.addEdge('A', 'C');
 graph.addEdge('B', 'D');
 graph.addEdge('C', 'D');
