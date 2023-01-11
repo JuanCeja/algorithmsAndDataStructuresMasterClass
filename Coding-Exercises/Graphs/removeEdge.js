@@ -20,8 +20,9 @@ class Graph {
     }
 
     removeEdge (vertex1, vertex2) {
-
-    };
+        this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(element => element !== vertex2);
+        this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(element => element !== vertex1);
+    }
 }
 
 let graph = new Graph;
