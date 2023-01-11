@@ -19,13 +19,15 @@ class Graph {
         this.adjacencyList[vertex2].push(vertex1);
     }
 
-    removeEdge (vertex1, vertex2) {
+    removeEdge(vertex1, vertex2) {
         this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(element => element !== vertex2);
         this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(element => element !== vertex1);
     }
 
-    removeVertex(vertex){
-        
+    removeVertex(vertex) {
+        // loop as long as there are any other vertices in the adjacency list for that vertex 
+
+            // inside the loop, call our removeEdge function with the vertex we are removing and any values in the adjacency list for that vertex
     }
 }
 
@@ -39,9 +41,7 @@ graph.addEdge('A', 'B');
 graph.addEdge('A', 'C');
 graph.addEdge('B', 'D');
 graph.addEdge('C', 'D');
-graph.removeEdge('B', 'A');
-graph.removeEdge('C', 'D');
-console.log(graph.adjacencyList['A']); // contains 'C'
-console.log(graph.adjacencyList['B']); // contains 'D'
-console.log(graph.adjacencyList['C']); // contains 'A'
-console.log(graph.adjacencyList['D']); // contains 'B'
+graph.removeVertex('C');
+graph.removeVertex('B');
+
+console.log(graph.adjacencyList) // 'A' and 'D' still exist
