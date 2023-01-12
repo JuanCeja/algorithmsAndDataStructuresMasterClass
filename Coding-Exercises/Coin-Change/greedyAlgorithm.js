@@ -1,21 +1,11 @@
-// Dynamic Programming - Coin Change
+// Greedy Algorithm - Coin Change
 
 // Write a function called coinChange which accepts two parameters: an array of denominations and a value. The function should return the number of ways you can obtain the value from the given collection of denominations. You can think of this as figuring out the number of ways to make change for a given value from a supply of coins.
 
 // ============================================================================================================================================================================================
 
 function coinChange(coins, amount) {
-    let combinations = Array(amount + 1).fill(0);
-    combinations[0] = 1;
-
-    for (let i = 0; i < coins.length; i++) {
-        for (let j = 0; j < combinations.length; j++) {
-            if (j >= coins[i]) {
-                combinations[j] += combinations[j - coins[i]];
-            }
-        }
-    }
-    return combinations[combinations.length - 1];
+    
 }
 
 const denominations = [1, 5, 10, 25]
