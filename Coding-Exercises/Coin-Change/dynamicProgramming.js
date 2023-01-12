@@ -5,17 +5,17 @@
 // ============================================================================================================================================================================================
 
 function coinChange(coins, value) {
-    let ways = Array(value + 1).fill(0);
-    ways[0] = 1;
+    let combinations = Array(value + 1).fill(0);
+    combinations[0] = 1;
 
-    for(let i = 0; i < coins.length; i++) {
-        for(let j = 0; j < ways.length; j++) {
-            if(coins[i] <= j) {
-                ways[j] = ways[j - coins[i]] + ways[j];
+    for (let i = 0; i < coins.length; i++) {
+        for (let j = 0; j < combinations.length; j++) {
+            if (j >= coins[i]) {
+                combinations[j] += combinations[j - coins[i]];
             }
         }
     }
-    return ways[ways.length - 1];
+    return combinations[combinations.length - 1];
 }
 
 const denominations = [1, 5, 10, 25]
