@@ -47,23 +47,25 @@ class Graph {
     }
 
     breadthFirstSearch(start) {
-        // create a queue and place the starting vertex in it
+        const queue = [start];
+        const result = [];
+        const visited = {};
+        let currentVertex;
 
-        // create an array to store the nodes visited
+        visited[start] = true;
 
-        // create an object to store nodes visited
+        while (queue.length) {
+            currentVertex = queue.shift();
+            result.push(currentVertex);
 
-        // mark the starting vertex as visited
-
-        // loop as long as there is anything in the queue
-
-            // remove the first vertex from the queue and push it into the array that stores nodes visited
-
-            // loop over each vertex in the adjacency list for the vertex you are visiting
-
-            // if it is not inside the object that stores nodes visited, mark it as visited and queue that vertex
-            
-        // return the array of visited nodes
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            })
+        }
+        return result;
     }
 }
 
@@ -95,12 +97,14 @@ graph.addEdge('V', 'W');
 graph.addEdge('R', 'T');
 graph.addEdge('W', 'T');
 
-console.log(graph.depthFirstSearch('S'));
+// console.log(graph.depthFirstSearch('S'));
+console.log(graph.breadthFirstSearch('S'));
 
 /**
  * results:
  *
  * ["S", "P", "X", "U", "V", "W", "Y", "R", "Q", "T"] // recursive version
  * ["S", "U", "V", "W", "T", "R", "Q", "Y", "X", "P"] // iterative (stack) version
+ * ["S", "P", "U", "X", "Q", "V", "Y", "R", "W", "T"] // breadthFirstSearch
  *
  **/
