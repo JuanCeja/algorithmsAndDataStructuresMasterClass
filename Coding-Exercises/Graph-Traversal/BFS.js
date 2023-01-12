@@ -97,7 +97,7 @@ graph.addEdge('V', 'W');
 graph.addEdge('R', 'T');
 graph.addEdge('W', 'T');
 
-// console.log(graph.depthFirstSearch('S'));
+console.log(graph.depthFirstSearch('S'));
 console.log(graph.breadthFirstSearch('S'));
 
 /**
