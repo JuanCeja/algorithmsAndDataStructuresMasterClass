@@ -4,19 +4,37 @@
 
 // ============================================================================================================================================================================================
 
-function coinChange(coins, amount) {
-    
+function minCoinChange(coins, amount) {
+    const arr_min = []
+
+    for (let i = 0; i < amount + 1; i++) {
+        arr_min.push(i)
+    }
+
+    function helper(amount, arr_min) {
+        if (coins.includes(amount)) {
+            return [amount]
+        }
+
+        let result;
+        for (const coin of coins) {
+            if (coin <= amount) {
+                result = [coin].concat(helper(amount - coin, arr_min))
+                if (result.length < arr_min[amount]) {
+                    arr_min[amount] = result.length
+                }
+            }
+        }
+        return result
+    }
+    return helper(amount, arr_min)
 }
 
 const denominations = [1, 5, 10, 25]
 
-console.log(coinChange(denominations, 1)) // 1
-console.log(coinChange(denominations, 2)) // 1
-console.log(coinChange(denominations, 5)) // 2
-console.log(coinChange(denominations, 10)) // 4
-console.log(coinChange(denominations, 25)) // 13
-console.log(coinChange(denominations, 45)) // 39
-console.log(coinChange(denominations, 100)) // 242
-console.log(coinChange(denominations, 145)) // 622
-console.log(coinChange(denominations, 1451)) // 425663
-console.log(coinChange(denominations, 14511)) // 409222339
+console.log(minCoinChange(denominations, 1)) // [ 1 ]
+console.log(minCoinChange(denominations, 2)) // [ 1, 1 ]
+console.log(minCoinChange(denominations, 5)) // [ 5 ]
+console.log(minCoinChange(denominations, 10)) //[ 10 ]
+console.log(minCoinChange(denominations, 25)) //[ 25 ]
+console.log(minCoinChange(denominations, 45)) //[ 25, 10, 10 ]
