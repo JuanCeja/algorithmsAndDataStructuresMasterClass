@@ -4,8 +4,18 @@
 
 // ============================================================================================================================================================================================
 
-function coinChange() {
-    // add whatever parameters you deem necessary - good luck!
+function coinChange(coins, value) {
+    let ways = Array(value + 1).fill(0);
+    ways[0] = 1;
+
+    for(let i = 0; i < coins.length; i++) {
+        for(let j = 0; j < ways.length; j++) {
+            if(coins[i] <= j) {
+                ways[j] = ways[j - coins[i]] + ways[j];
+            }
+        }
+    }
+    return ways[ways.length - 1];
 }
 
 const denominations = [1, 5, 10, 25]
