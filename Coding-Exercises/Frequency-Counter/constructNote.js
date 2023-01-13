@@ -14,30 +14,25 @@
 
 // ============================================================================================================================================================================================
 
-function constructNote(letters, message) {
-    // create 2 objects to compare at the end
-    let lettersObj = {};
-    let messageObj = {};
+function constructNote(message, letters) {
+    let lettersFreq = {};
+    let messageFreq = {};
 
-    // loop through both strings to create the objects
-    for (let i = 0; i < letters.length; i++) {
-        if(!lettersObj[letters[i]]) lettersObj[letters[i]] = 1;
-        else lettersObj[letters[i]]++;
+    for (let char of message) {
+        if(char in messageFreq) messageFreq[char]++;
+        else messageFreq[char] = 1;
     }
 
-    for (let j = 0; j < message.length; j++) {
-        if(!messageObj[message[j]]) messageObj[message[j]] = 1;
-        else messageObj[message[j]]++;
+    for (let char of letters) {
+        if(char in lettersFreq) lettersFreq[char]++;
+        else lettersFreq[char] = 1;
     }
 
-    // loop through one of the objects and compare the values to the other object
-    for (const value in lettersObj) {
-        // if the values dont match return false
-        if(lettersObj[value] !== messageObj[value]) return false;
+    for(let char in messageFreq) {
+        if(!(char in lettersFreq)) return false;
+        else if(messageFreq[char] > lettersFreq[char]) return false;
     }
 
-
-    // return true
     return true;
 }
 
