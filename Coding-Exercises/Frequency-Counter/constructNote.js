@@ -14,8 +14,15 @@
 
 // ============================================================================================================================================================================================
 
-function constructNote() {
-    
+function constructNote(letters, message) {
+    // create 2 objects to compare at the end
+
+    // loop through both strings to create the objects
+
+    // loop through one of the objects and compare the values to the other object
+        // if the values dont match return false
+
+    // return true
 }
 
 console.log(constructNote('aa', 'abc')) // false
