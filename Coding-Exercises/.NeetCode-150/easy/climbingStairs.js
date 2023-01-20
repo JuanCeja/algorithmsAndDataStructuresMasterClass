@@ -27,12 +27,12 @@
 const climbStairs = (n) => {
     const possibilities = {};
 
-    let count = function (k) {
-        if (possibilities[k]) return possibilities[k];
-        if (k === 2) return 2;
-        if (k <= 1) return 1;
-        possibilities[k] = count(k - 1) + count(k - 2);
-        return possibilities[k];
+    let count = function (n) {
+        if (possibilities[n]) return possibilities[n];
+        if (n === 2) return 2;
+        if (n <= 1) return 1;
+        possibilities[n] = count(n - 1) + count(n - 2);
+        return possibilities[n];
     }
     return count(n);
 }
