@@ -27,7 +27,19 @@
 // ===================================================================================================================================================================================
 
 const isValid = (s) => {
-    
+    if(s.length === 0 || s.length % 2 !== 0) return false
+
+    let closingTags = {
+        "(": ")",
+        "[": "]",
+        "{": "}"
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        if(s[i + 1] !== closingTags[s[i]]) return false;
+    }
+
+    return true;
 }
 
 console.log(isValid("()")); // true
