@@ -25,7 +25,17 @@
 // ===================================================================================================================================================================================
 
 const climbStairs = (n) => {
-    
+    const possibilities = {};
+
+    let count = function (k) {
+        if (possibilities[k]) return possibilities[k];
+        if (k === 2) return 2;
+        if (k <= 1) return 1;
+        possibilities[k] = count(k - 1) + count(k - 2);
+        return possibilities[k];
+    }
+    return count(n);
 }
 
-console.log(climbStairs(3));
+console.log(climbStairs(3)); // 3
+console.log(climbStairs(4)); // 5
